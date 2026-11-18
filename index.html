@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary SEO Meta Tags -->
+  <title>مُجمّع الحواسيب الذكي | تجميعات، شاشات، لابتوبات، ومقارنة الأسعار</title>
+  <meta name="description" content="منصة ذكية لتجميع وفحص توافق قطع الكمبيوتر، اقتراح الشاشات المناسبة، حساب عنق الزجاجة، ومقارنة الأسعار بالدولار والريال والدينار مع روابط شراء مباشرة.">
+  <meta name="keywords" content="تجميع كمبيوتر, PC Builder, شاشات قيمنق, لابتوبات قيمنق, Ryzen 7 9800X3D, RTX 5070, فحص توافق القطع, حاسبة عنق الزجاجة">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="canonical" href="https://pcbuilder-ar.netlify.app/">
+
+  <!-- Embedded SVG Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%2310b981'/><text x='50' y='67' font-size='55' text-anchor='middle' fill='%230f172a' font-family='sans-serif' font-weight='bold'>PC</text></svg>">
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="مُجمّع الحواسيب الذكي • PC Builder">
+  <meta property="og:url" content="https://pcbuilder-ar.netlify.app/">
+  <meta property="og:title" content="مُجمّع الحواسيب الذكي | ابنِ تجميعتك واكتشف الشاشة المناسبة مجاناً">
+  <meta property="og:description" content="أدخل ميزانيتك بالدولار أو العملة المحلية ليقترح النظام أفضل تجميعة متوافقة مع الشاشة المناسبة وروابط الشراء المباشرة.">
+  <meta property="og:image" content="https://pcbuilder-ar.netlify.app/og-banner.png">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Cairo', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-200/80 dark:bg-slate-900 text-slate-800 dark:text-slate-100 min-h-screen py-6 px-4 transition-colors duration-200">
+
+  <div class="max-w-6xl mx-auto">
+
+    <!-- HERO BANNER HEADER -->
+    <header class="relative overflow-hidden rounded-3xl bg-gradient-to-l from-slate-900 via-slate-800 to-emerald-950 text-white p-6 md:p-8 mb-6 shadow-md border border-slate-700/60">
+      <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#10b981 1px, transparent 1px); background-size: 20px 20px;"></div>
+      
+      <div class="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+        <div class="space-y-2 max-w-2xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs font-extrabold">
+            <span>⚡ الإصدار الشامل 10.0</span>
+            <span>•</span>
+            <span>تجميع + شاشات + لابتوبات</span>
+          </div>
+          <h1 class="text-2xl md:text-4xl font-black tracking-tight text-white leading-snug">
+            مُجمّع الحواسيب الذكي وفاحص التوافق
+          </h1>
+          <p class="text-slate-300 text-xs md:text-sm leading-relaxed">
+            خطّط تجميعتك بدقة، احسب الفريمات وعنق الزجاجة، اكتشف الشاشة المثالية لجهازك، وقارن الأسعار بين <strong class="text-amber-300">Amazon</strong> و <strong class="text-emerald-300">AliExpress</strong>.
+          </p>
+        </div>
+
+        <!-- Currency & Theme Controls -->
+        <div class="flex flex-wrap items-center gap-3 bg-slate-950/60 backdrop-blur-md p-3 rounded-2xl border border-slate-700/80">
+          <div class="flex items-center gap-2">
+            <label for="currency-select" class="text-xs font-bold text-slate-300">العملة:</label>
+            <select id="currency-select" class="bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-extrabold text-emerald-400 focus:outline-none">
+              <option value="USD" data-rate="1" data-symbol="$" selected>🇺🇸 دولار أمريكي (USD)</option>
+              <option value="SAR" data-rate="3.75" data-symbol="ر.س">🇸🇦 ريال سعودي (SAR)</option>
+              <option value="AED" data-rate="3.67" data-symbol="د.إ">🇦🇪 درهم إماراتي (AED)</option>
+              <option value="KWD" data-rate="0.31" data-symbol="د.ك">🇰🇼 دينار كويتي (KWD)</option>
+              <option value="DZD" data-rate="245" data-symbol="د.ج">🇩🇿 دينار جزائري (DZD)</option>
+            </select>
+          </div>
+
+          <button id="btn-theme-toggle" type="button" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-200 transition cursor-pointer">
+            🌙 وضع داكن
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Error Alert if opened without server or JSON syntax error -->
+    <div id="fetch-error" class="hidden mb-6 p-4 rounded-xl bg-amber-100 dark:bg-amber-950/50 border border-amber-400 text-amber-900 dark:text-amber-200 text-sm">
+      ⚠️ <strong>تنبيه تقني:</strong> تعذر قراءة ملف <code>parts.json</code> الخارجي أو يوجد خطأ في صيغته. يرجى التحقق من صحة ملف JSON.
+    </div>
+
+    <!-- Sticky Navigation Mode Switcher Tabs -->
+    <nav class="sticky top-3 z-40 flex flex-wrap gap-2 mb-6 bg-slate-100/95 dark:bg-slate-800/95 backdrop-blur-md p-2 rounded-2xl border border-slate-300/80 dark:border-slate-700 shadow-md w-fit">
+      <button id="tab-btn-builder" class="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer bg-emerald-600 text-white shadow-sm">
+        🛠️ المجمّع الذكي والشاشات
+      </button>
+      <button id="tab-btn-vs" class="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white">
+        ⚔️ مقارنة قطعتين (VS)
+      </button>
+      <button id="tab-btn-upgrade" class="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white">
+        🚀 استشاري الترقيات
+      </button>
+      <button id="tab-btn-presets" class="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white">
+        ⚡ تجميعات جاهزة
+      </button>
+      <button id="tab-btn-prebuilt" class="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white">
+        💻 حواسيب ولابتوبات جاهزة
+      </button>
+    </nav>
+
+    <!-- ========================================================= -->
+    <!-- VIEW 1: PC BUILDER & COMPATIBILITY                        -->
+    <!-- ========================================================= -->
+    <div id="view-builder">
+
+      <!-- Smart Auto-Builder by Budget Section -->
+      <section class="bg-white/95 dark:bg-slate-800 p-6 rounded-2xl border border-slate-300/80 dark:border-emerald-500/30 mb-8 shadow-sm">
+        <div class="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-4">
+          <div class="space-y-1">
+            <h2 class="text-lg font-extrabold text-emerald-700 dark:text-emerald-400 flex items-center gap-2">
+              ✨ المجمّع الذكي حسب الميزانية (Auto-Builder)
+            </h2>
+            <p class="text-xs text-slate-600 dark:text-slate-400">
+              أدخل ميزانيتك بالعملة المختارة وسيقترح النظام أقوى تجميعة متوافقة 100%
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full lg:w-auto">
+            <div>
+              <label class="block text-xs text-slate-700 dark:text-slate-300 mb-1 font-bold">
+                الميزانية (<span class="curr-label">$</span>):
+              </label>
+              <input type="number" id="budget-input" value="650"
+                     class="w-full sm:w-40 bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2 text-sm font-extrabold text-slate-900 dark:text-white focus:border-emerald-500 focus:outline-none">
+            </div>
+
+            <div>
+              <label class="block text-xs text-slate-700 dark:text-slate-300 mb-1 font-bold">الاستخدام الأساسي:</label>
+              <select id="budget-goal" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2 text-sm font-semibold text-slate-800 dark:text-slate-200 focus:border-emerald-500 focus:outline-none">
+                <option value="gaming">🎮 قيمنق وألعاب (Gaming)</option>
+                <option value="work">💻 مونتاج وبرمجة (Workstation)</option>
+              </select>
+            </div>
+
+            <div class="flex items-end">
+              <button id="btn-auto-build" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-sm px-5 py-2.5 rounded-xl transition shadow-sm cursor-pointer">
+                اقترح تجميعة ⚡
+              </button>
+            </div>
+          </div>
+        </div>
+        <div id="auto-build-msg" class="hidden mt-3 text-xs font-bold px-3.5 py-2.5 rounded-xl"></div>
+      </section>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <!-- Left Column -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="bg-white/95 dark:bg-slate-800 p-6 rounded-2xl border border-slate-300/80 dark:border-slate-700 shadow-sm space-y-5">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <h2 class="text-lg font-extrabold text-slate-900 dark:text-white">1. مكونات الجهاز (7 قطع)</h2>
+              <div class="flex items-center gap-2">
+                <button id="btn-export-png" class="text-xs bg-amber-500 hover:bg-amber-400 text-slate-950 px-3.5 py-1.5 rounded-lg transition font-extrabold cursor-pointer shadow-xs">
+                  📸 تحميل كصورة PNG
+                </button>
+                <button id="btn-share" class="text-xs bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-emerald-700 dark:text-emerald-300 px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-600 transition font-bold cursor-pointer">
+                  🔗 نسخ الرابط
+                </button>
+              </div>
+            </div>
+
+            <!-- Quick Search Filter Bar -->
+            <div class="relative">
+              <input type="text" id="parts-search-input" placeholder="🔍 ابحث بسرعة عن قطعة بالاسم (مثال: 9800X3D, RTX 5070, DDR5, HDD)..."
+                     class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl pl-10 pr-4 py-2.5 text-sm text-slate-900 dark:text-white placeholder-slate-500 focus:border-emerald-500 focus:outline-none">
+              <button id="btn-clear-search" class="hidden absolute left-3 top-2.5 text-xs font-bold text-slate-500 hover:text-slate-800 cursor-pointer">✕</button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">المعالج (CPU)</label>
+                <select id="select-cpu" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 rounded-xl px-3 py-2.5 text-sm font-semibold focus:border-emerald-500 focus:outline-none">
+                  <option value="">-- اختر المعالج --</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">مبرد المعالج (CPU Cooler)</label>
+                <select id="select-cooler" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 rounded-xl px-3 py-2.5 text-sm font-semibold focus:border-emerald-500 focus:outline-none">
+                  <option value="">-- اختر المبرد --</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">اللوحة الأم (Motherboard)</label>
+                <select id="select-mb" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 rounded-xl px-3 py-2.5 text-sm font-semibold focus:border-emerald-500 focus:outline-none">
+                  <option value="">-- اختر اللوحة الأم --</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">الذاكرة العشوائية (RAM)</label>
+                <select id="select-ram" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 rounded-xl px-3 py-2.5 text-sm font-semibold focus:border-emerald-500 focus:outline-none">
+                  <option value="">-- اختر الرام --</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">كارت الشاشة (GPU)</label>
+                <select id="select-gpu" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 rounded-xl px-3 py-2.5 text-sm font-semibold focus:border-emerald-500 focus:outline-none">
+                  <option value="">-- اختر كارت الشاشة --</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">التخزين (SSD / HDD)</label>
+                <select id="select-storage" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 rounded-xl px-3 py-2.5 text-sm font-semibold focus:border-emerald-500 focus:outline-none">
+                  <option value="">-- اختر قرص التخزين --</option>
+                </select>
+              </div>
+
+              <div class="md:col-span-2">
+                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">مزود الطاقة (Power Supply / PSU)</label>
+                <select id="select-psu" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 rounded-xl px-3 py-2.5 text-sm font-semibold focus:border-emerald-500 focus:outline-none">
+                  <option value="">-- اختر مزود الطاقة --</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Performance & Games Estimator -->
+          <div class="bg-white/95 dark:bg-slate-800 p-6 rounded-2xl border border-slate-300/80 dark:border-slate-700 shadow-sm space-y-5">
+            <h2 class="text-lg font-extrabold text-slate-900 dark:text-white">2. تقدير الأداء في الألعاب والبرامج</h2>
+            
+            <div id="perf-placeholder" class="text-sm text-slate-500 dark:text-slate-400 py-4 text-center">
+              اختر المعالج وكارت الشاشة أو انتقل إلى تبويب <strong>⚡ تجميعات جاهزة</strong> لتعبئة تجميعة تلقائياً وعرض معدل الإطارات (FPS).
+            </div>
+
+            <div id="perf-results" class="hidden space-y-5">
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <div class="bg-slate-100 dark:bg-slate-900 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 text-center">
+                  <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 block">EA FC 26 / FIFA</span>
+                  <span id="fps-fc" class="text-xl font-black text-emerald-600 dark:text-emerald-400 mt-1 block">-- FPS</span>
+                </div>
+                <div class="bg-slate-100 dark:bg-slate-900 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 text-center">
+                  <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 block">Valorant / CS2</span>
+                  <span id="fps-esports" class="text-xl font-black text-emerald-600 dark:text-emerald-400 mt-1 block">-- FPS</span>
+                </div>
+                <div class="bg-slate-100 dark:bg-slate-900 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 text-center">
+                  <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 block">GTA V (High)</span>
+                  <span id="fps-gta" class="text-xl font-black text-sky-600 dark:text-sky-400 mt-1 block">-- FPS</span>
+                </div>
+                <div class="bg-slate-100 dark:bg-slate-900 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 text-center">
+                  <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 block">Cyberpunk 2077</span>
+                  <span id="fps-aaa" class="text-xl font-black text-amber-600 dark:text-amber-400 mt-1 block">-- FPS</span>
+                </div>
+              </div>
+
+              <div class="space-y-3 pt-2">
+                <div>
+                  <div class="flex justify-between text-xs mb-1">
+                    <span class="text-slate-700 dark:text-slate-300 font-bold">المونتاج وتعديل الفيديو (Premiere / CapCut)</span>
+                    <span id="label-editing" class="text-emerald-700 dark:text-emerald-400 font-extrabold">--</span>
+                  </div>
+                  <div class="w-full bg-slate-200 dark:bg-slate-900 rounded-full h-2.5">
+                    <div id="bar-editing" class="bg-emerald-500 h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="flex justify-between text-xs mb-1">
+                    <span class="text-slate-700 dark:text-slate-300 font-bold">التصميم والبرمجة وتعدد المهام</span>
+                    <span id="label-coding" class="text-sky-700 dark:text-sky-400 font-extrabold">--</span>
+                  </div>
+                  <div class="w-full bg-slate-200 dark:bg-slate-900 rounded-full h-2.5">
+                    <div id="bar-coding" class="bg-sky-500 h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SMART MONITOR RECOMMENDATIONS SECTION -->
+          <div id="monitor-section" class="hidden bg-white/95 dark:bg-slate-800 p-6 rounded-2xl border border-sky-300 dark:border-sky-500/30 shadow-sm space-y-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <h2 class="text-lg font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
+                  🖥️ الشاشات المثالية المقترحة لهذه التجميعة
+                </h2>
+                <p id="monitor-tier-desc" class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">--</p>
+              </div>
+              <span id="monitor-res-badge" class="px-3 py-1 rounded-lg bg-sky-100 dark:bg-sky-500/20 text-sky-800 dark:text-sky-300 text-xs font-black">
+                1080p 180Hz
+              </span>
+            </div>
+
+            <div id="monitor-cards-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="lg:col-span-5 space-y-5">
+          <div id="status-card" class="p-5 rounded-2xl border bg-white/95 dark:bg-slate-800 border-slate-300/80 dark:border-slate-700 shadow-sm transition">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-extrabold text-slate-600 dark:text-slate-300">حالة التوافق التقني والحراري</span>
+              <span id="status-badge" class="px-2.5 py-1 rounded-md text-xs font-extrabold bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">بانتظار الاختيار</span>
+            </div>
+            <p id="status-desc" class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              قم بتحديد القطع من القائمة لبدء الفحص الفوري.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl border border-slate-300/80 dark:border-slate-700 bg-white/95 dark:bg-slate-800 shadow-sm space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-extrabold text-slate-600 dark:text-slate-300">فحص عنق الزجاجة (Bottleneck)</span>
+              <span id="bottleneck-badge" class="text-xs font-extrabold text-slate-500">---</span>
+            </div>
+            <p id="bottleneck-desc" class="text-xs text-slate-600 dark:text-slate-400">
+              يقيس مدى توازن قوة المعالج مع كارت الشاشة.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl border border-slate-300/80 dark:border-slate-700 bg-white/95 dark:bg-slate-800 shadow-sm space-y-4">
+            <div class="flex justify-between items-center">
+              <div>
+                <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 block">الاستهلاك الفعلي للطاقة</span>
+                <span class="text-lg font-black text-slate-900 dark:text-white"><span id="total-tdp">0</span> W</span>
+              </div>
+              <div class="text-left">
+                <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 block">الحد الأدنى الآمن للباور</span>
+                <span id="recommended-psu" class="text-base font-extrabold text-emerald-600 dark:text-emerald-400">---</span>
+              </div>
+            </div>
+
+            <div class="border-t border-slate-200 dark:border-slate-700 pt-3 flex justify-between items-end">
+              <div>
+                <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 block">التكلفة الإجمالية:</span>
+                <span id="total-local" class="text-2xl font-black text-emerald-700 dark:text-emerald-400">~0 $</span>
+              </div>
+              <div id="usd-equiv-box" class="hidden text-left">
+                <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 block">المعادل بالدولار:</span>
+                <span class="text-base font-extrabold text-slate-700 dark:text-slate-300">~<span id="total-usd">0</span> $</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Multi-Store Affiliate Links -->
+          <div id="links-container" class="space-y-2.5"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- VIEW 2: HEAD-TO-HEAD HARDWARE COMPARATOR (VS MODE)        -->
+    <!-- ========================================================= -->
+    <div id="view-vs" class="hidden space-y-6">
+      <div class="bg-white/95 dark:bg-slate-800 p-6 rounded-2xl border border-slate-300/80 dark:border-slate-700 shadow-sm">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200 dark:border-slate-700">
+          <div>
+            <h2 class="text-xl font-black text-slate-900 dark:text-white">⚔️ مقارنة المواصفات والسعر مقابل الأداء (VS)</h2>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">ابحث واختر قطعتين لمقارنة القوة الخام والسعر في المتاجر</p>
+          </div>
+          
+          <div class="flex items-center gap-2 bg-slate-100 dark:bg-slate-900 p-1.5 rounded-xl border border-slate-200 dark:border-slate-700">
+            <button id="vs-cat-cpu" class="px-4 py-1.5 rounded-lg text-xs font-extrabold bg-sky-600 text-white cursor-pointer transition">
+              المعالجات (CPUs)
+            </button>
+            <button id="vs-cat-gpu" class="px-4 py-1.5 rounded-lg text-xs font-extrabold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white cursor-pointer transition">
+              كروت الشاشة (GPUs)
+            </button>
+          </div>
+        </div>
+
+        <div class="pt-4">
+          <input type="text" id="vs-search-input" placeholder="🔍 تصفية قائمة المقارنة (مثال: Ryzen 7, RTX 5070, i5)..."
+                 class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2 text-sm text-slate-900 dark:text-white focus:border-sky-500 focus:outline-none">
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-11 gap-4 items-center pt-4">
+          <div class="md:col-span-5">
+            <label class="block text-xs font-extrabold text-sky-700 dark:text-sky-400 mb-2">القطعة الأولى (الخيار A):</label>
+            <select id="vs-select-a" class="w-full bg-slate-100 dark:bg-slate-900 border border-sky-400/60 text-slate-900 dark:text-slate-100 rounded-xl px-4 py-3 text-sm font-bold focus:outline-none"></select>
+          </div>
+
+          <div class="md:col-span-1 text-center">
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 font-black text-amber-600 dark:text-amber-400 text-sm">
+              VS
+            </span>
+          </div>
+
+          <div class="md:col-span-5">
+            <label class="block text-xs font-extrabold text-purple-700 dark:text-purple-400 mb-2">القطعة الثانية (الخيار B):</label>
+            <select id="vs-select-b" class="w-full bg-slate-100 dark:bg-slate-900 border border-purple-400/60 text-slate-900 dark:text-slate-100 rounded-xl px-4 py-3 text-sm font-bold focus:outline-none"></select>
+          </div>
+        </div>
+      </div>
+
+      <div id="vs-verdict-box" class="p-5 rounded-2xl border border-emerald-300 dark:border-emerald-500/40 bg-emerald-50/90 dark:bg-emerald-950/20 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <span class="text-xs font-extrabold text-emerald-700 dark:text-emerald-400 uppercase">خلاصة المقارنة الذكية</span>
+          <h3 id="vs-verdict-title" class="text-lg font-black text-slate-900 dark:text-white mt-0.5">--</h3>
+          <p id="vs-verdict-desc" class="text-xs text-slate-700 dark:text-slate-300 mt-1">--</p>
+        </div>
+        <div id="vs-value-badge" class="px-4 py-2 rounded-xl bg-emerald-600 text-white text-xs font-extrabold whitespace-nowrap shadow-xs">
+          --
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white/95 dark:bg-slate-800 p-6 rounded-2xl border border-sky-300 dark:border-sky-500/30 shadow-sm space-y-5">
+          <div class="flex justify-between items-start gap-2">
+            <div>
+              <span class="text-[11px] font-extrabold px-2.5 py-0.5 rounded bg-sky-100 dark:bg-sky-500/20 text-sky-800 dark:text-sky-300">الخيار A</span>
+              <h3 id="vs-a-name" class="text-xl font-black text-slate-900 dark:text-white mt-2">--</h3>
+            </div>
+            <div class="text-left">
+              <span id="vs-a-local" class="text-2xl font-black text-emerald-700 dark:text-emerald-400 block">--</span>
+              <span id="vs-a-usd" class="text-xs font-bold text-slate-500 dark:text-slate-400">--$</span>
+            </div>
+          </div>
+
+          <div class="space-y-1.5">
+            <div class="flex justify-between text-xs font-bold">
+              <span class="text-slate-600 dark:text-slate-400">مؤشر القوة والأداء الخام:</span>
+              <span id="vs-a-score-text" class="text-sky-700 dark:text-sky-400">-- / 100</span>
+            </div>
+            <div class="w-full bg-slate-200 dark:bg-slate-900 rounded-full h-3 p-0.5">
+              <div id="vs-a-score-bar" class="bg-sky-500 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 pt-2">
+            <div class="bg-slate-100 dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-700">
+              <span class="text-[11px] text-slate-500 dark:text-slate-400 block">استهلاك الطاقة (TDP)</span>
+              <span id="vs-a-tdp" class="text-base font-extrabold text-slate-900 dark:text-white mt-0.5 block">-- W</span>
+            </div>
+            <div class="bg-slate-100 dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-700">
+              <span class="text-[11px] text-slate-500 dark:text-slate-400 block">معامل القيمة (نقطة / $)</span>
+              <span id="vs-a-value" class="text-base font-extrabold text-emerald-600 dark:text-emerald-400 mt-0.5 block">--</span>
+            </div>
+          </div>
+
+          <div id="vs-a-extra" class="text-xs text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-900 px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700">
+            --
+          </div>
+
+          <div class="grid grid-cols-2 gap-2">
+            <a id="vs-a-amz" href="#" target="_blank" rel="noopener noreferrer"
+               class="text-center py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs transition">
+              🛒 سعر Amazon ↗
+            </a>
+            <a id="vs-a-link" href="#" target="_blank" rel="noopener noreferrer"
+               class="text-center py-2.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-extrabold text-xs transition">
+              🌐 سعر AliExpress ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-white/95 dark:bg-slate-800 p-6 rounded-2xl border border-purple-300 dark:border-purple-500/30 shadow-sm space-y-5">
+          <div class="flex justify-between items-start gap-2">
+            <div>
+              <span class="text-[11px] font-extrabold px-2.5 py-0.5 rounded bg-purple-100 dark:bg-purple-500/20 text-purple-800 dark:text-purple-300">الخيار B</span>
+              <h3 id="vs-b-name" class="text-xl font-black text-slate-900 dark:text-white mt-2">--</h3>
+            </div>
+            <div class="text-left">
+              <span id="vs-b-local" class="text-2xl font-black text-emerald-700 dark:text-emerald-400 block">--</span>
+              <span id="vs-b-usd" class="text-xs font-bold text-slate-500 dark:text-slate-400">--$</span>
+            </div>
+          </div>
+
+          <div class="space-y-1.5">
+            <div class="flex justify-between text-xs font-bold">
+              <span class="text-slate-600 dark:text-slate-400">مؤشر القوة والأداء الخام:</span>
+              <span id="vs-b-score-text" class="text-purple-700 dark:text-purple-400">-- / 100</span>
+            </div>
+            <div class="w-full bg-slate-200 dark:bg-slate-900 rounded-full h-3 p-0.5">
+              <div id="vs-b-score-bar" class="bg-purple-500 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 pt-2">
+            <div class="bg-slate-100 dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-700">
+              <span class="text-[11px] text-slate-500 dark:text-slate-400 block">استهلاك الطاقة (TDP)</span>
+              <span id="vs-b-tdp" class="text-base font-extrabold text-slate-900 dark:text-white mt-0.5 block">-- W</span>
+            </div>
+            <div class="bg-slate-100 dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-700">
+              <span class="text-[11px] text-slate-500 dark:text-slate-400 block">معامل القيمة (نقطة / $)</span>
+              <span id="vs-b-value" class="text-base font-extrabold text-emerald-600 dark:text-emerald-400 mt-0.5 block">--</span>
+            </div>
+          </div>
+
+          <div id="vs-b-extra" class="text-xs text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-900 px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700">
+            --
+          </div>
+
+          <div class="grid grid-cols-2 gap-2">
+            <a id="vs-b-amz" href="#" target="_blank" rel="noopener noreferrer"
+               class="text-center py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs transition">
+              🛒 سعر Amazon ↗
+            </a>
+            <a id="vs-b-link" href="#" target="_blank" rel="noopener noreferrer"
+               class="text-center py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-extrabold text-xs transition">
+              🌐 سعر AliExpress ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- VIEW 3: SMART UPGRADE ADVISOR                             -->
+    <!-- ========================================================= -->
+    <div id="view-upgrade" class="hidden space-y-6">
+      <section class="bg-white/95 dark:bg-slate-800 p-6 rounded-2xl border border-amber-300 dark:border-amber-500/30 shadow-sm space-y-6">
+        <div>
+          <h2 class="text-xl font-black text-amber-600 dark:text-amber-400 flex items-center gap-2">
+            🚀 استشاري الترقيات الذكي (Smart Upgrade Advisor)
+          </h2>
+          <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">
+            حدد مواصفات جهازك الحالي وميزانية الترقية، وسيقترح النظام القطعة المتوافقة التي تمنحك أكبر قفزة في الأداء
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">معالجك الحالي (Current CPU):</label>
+            <select id="upg-curr-cpu" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 rounded-xl px-3 py-2.5 text-sm font-semibold focus:border-amber-500 focus:outline-none"></select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">لوحتك الأم الحالية (Motherboard):</label>
+            <select id="upg-curr-mb" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 rounded-xl px-3 py-2.5 text-sm font-semibold focus:border-amber-500 focus:outline-none"></select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">الرام الحالية (Current RAM):</label>
+            <select id="upg-curr-ram" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 rounded-xl px-3 py-2.5 text-sm font-semibold focus:border-amber-500 focus:outline-none"></select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">كارت الشاشة الحالي (Current GPU):</label>
+            <select id="upg-curr-gpu" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 rounded-xl px-3 py-2.5 text-sm font-semibold focus:border-amber-500 focus:outline-none"></select>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-slate-200 dark:border-slate-700 flex flex-col sm:flex-row items-stretch sm:items-end justify-between gap-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 flex-1">
+            <div>
+              <label class="block text-xs text-slate-700 dark:text-slate-300 mb-1 font-bold">
+                ميزانية الترقية (<span class="curr-label">$</span>):
+              </label>
+              <input type="number" id="upg-budget" value="250" min="15"
+                     class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2 text-sm font-extrabold text-slate-900 dark:text-white focus:border-amber-500 focus:outline-none">
+            </div>
+
+            <div>
+              <label class="block text-xs text-slate-700 dark:text-slate-300 mb-1 font-bold">هدف الترقية:</label>
+              <select id="upg-goal" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2 text-sm font-semibold text-slate-800 dark:text-slate-200 focus:border-amber-500 focus:outline-none">
+                <option value="gaming">🎮 رفع الفريمات في الألعاب</option>
+                <option value="work">💻 تسريع المونتاج والبرمجة</option>
+              </select>
+            </div>
+          </div>
+
+          <button id="btn-analyze-upgrade" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-sm px-6 py-2.5 rounded-xl transition shadow-sm cursor-pointer">
+            اكتشف أفضل ترقية 🔍
+          </button>
+        </div>
+      </section>
+
+      <div id="upg-results-container" class="hidden space-y-5"></div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- VIEW 4: ONE-CLICK QUICK BUILD PRESETS (6 TIERS)           -->
+    <!-- ========================================================= -->
+    <div id="view-presets" class="hidden space-y-6">
+      <div class="bg-white/95 dark:bg-slate-800 p-6 rounded-2xl border border-slate-300/80 dark:border-slate-700 shadow-sm">
+        <span class="text-xs font-extrabold text-teal-700 dark:text-teal-400 uppercase">تعبئة تلقائية بنقرة واحدة</span>
+        <h2 class="text-xl md:text-2xl font-black text-slate-900 dark:text-white mt-1">
+          ⚡ تجميعات مقترحة وجاهزة حسب الميزانية والاستخدام
+        </h2>
+        <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">
+          اختر أي تجميعة أدناه ليتم تحميل قطعها تلقائياً في المجمّع الذكي وعرض الفريمات والتوافق والأسعار
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <button type="button" data-preset="eco_tier" class="preset-btn text-right p-5 rounded-2xl bg-white/95 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-slate-700/80 border border-slate-300/80 dark:border-slate-700 hover:border-emerald-500 transition shadow-xs group cursor-pointer flex items-center justify-between gap-3">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+              <span class="text-sm font-extrabold text-slate-900 dark:text-white group-hover:text-emerald-700 dark:group-hover:text-emerald-400">1. الدراسة والألعاب الخفيفة</span>
+            </div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5">Ryzen 5 5600GT • 16GB RAM • 256GB NVMe</p>
+          </div>
+          <span data-usd="240" class="preset-price px-2.5 py-1 rounded-lg bg-emerald-100 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 text-xs font-black whitespace-nowrap">
+            ~240$
+          </span>
+        </button>
+
+        <button type="button" data-preset="budget_gpu" class="preset-btn text-right p-5 rounded-2xl bg-white/95 dark:bg-slate-800 hover:bg-teal-50 dark:hover:bg-slate-700/80 border border-slate-300/80 dark:border-slate-700 hover:border-teal-500 transition shadow-xs group cursor-pointer flex items-center justify-between gap-3">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-teal-500"></span>
+              <span class="text-sm font-extrabold text-slate-900 dark:text-white group-hover:text-teal-700 dark:group-hover:text-teal-400">2. اقتصادية بكارت منفصل</span>
+            </div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5">Core i3-12100F • GTX 1660 Super • Combo 1TB</p>
+          </div>
+          <span data-usd="425" class="preset-price px-2.5 py-1 rounded-lg bg-teal-100 dark:bg-teal-500/20 text-teal-800 dark:text-teal-300 text-xs font-black whitespace-nowrap">
+            ~425$
+          </span>
+        </button>
+
+        <button type="button" data-preset="gaming_mid" class="preset-btn text-right p-5 rounded-2xl bg-white/95 dark:bg-slate-800 hover:bg-sky-50 dark:hover:bg-slate-700/80 border border-slate-300/80 dark:border-slate-700 hover:border-sky-500 transition shadow-xs group cursor-pointer flex items-center justify-between gap-3">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-sky-500"></span>
+              <span class="text-sm font-extrabold text-slate-900 dark:text-white group-hover:text-sky-700 dark:group-hover:text-sky-400">3. قيمنق 1080p مثالية</span>
+            </div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5">Ryzen 5 5600 • RX 6600 8GB • 16GB DDR4</p>
+          </div>
+          <span data-usd="510" class="preset-price px-2.5 py-1 rounded-lg bg-sky-100 dark:bg-sky-500/20 text-sky-800 dark:text-sky-300 text-xs font-black whitespace-nowrap">
+            ~510$
+          </span>
+        </button>
+
+        <button type="button" data-preset="am5_value" class="preset-btn text-right p-5 rounded-2xl bg-white/95 dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-slate-700/80 border border-slate-300/80 dark:border-slate-700 hover:border-indigo-500 transition shadow-xs group cursor-pointer flex items-center justify-between gap-3">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-indigo-500"></span>
+              <span class="text-sm font-extrabold text-slate-900 dark:text-white group-hover:text-indigo-700 dark:group-hover:text-indigo-400">4. الجيل الجديد AM5 اقتصادية</span>
+            </div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5">Ryzen 5 7500F • Arc B580 12GB • 16GB DDR5</p>
+          </div>
+          <span data-usd="745" class="preset-price px-2.5 py-1 rounded-lg bg-indigo-100 dark:bg-indigo-500/20 text-indigo-800 dark:text-indigo-300 text-xs font-black whitespace-nowrap">
+            ~745$
+          </span>
+        </button>
+
+        <button type="button" data-preset="rtx50_2k" class="preset-btn text-right p-5 rounded-2xl bg-white/95 dark:bg-slate-800 hover:bg-purple-50 dark:hover:bg-slate-700/80 border border-purple-300 dark:border-purple-500/40 hover:border-purple-500 transition shadow-xs group cursor-pointer flex items-center justify-between gap-3">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-purple-500"></span>
+              <span class="text-sm font-extrabold text-slate-900 dark:text-white group-hover:text-purple-700 dark:group-hover:text-purple-400">5. تجميعة 2K حديثة (RTX 50)</span>
+            </div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5">Ryzen 5 9600X • RTX 5070 12GB • 32GB DDR5</p>
+          </div>
+          <span data-usd="1235" class="preset-price px-2.5 py-1 rounded-lg bg-purple-100 dark:bg-purple-500/20 text-purple-800 dark:text-purple-300 text-xs font-black whitespace-nowrap">
+            ~1,235$
+          </span>
+        </button>
+
+        <button type="button" data-preset="gulf_ultra" class="preset-btn text-right p-5 rounded-2xl bg-white/95 dark:bg-slate-800 hover:bg-amber-50 dark:hover:bg-slate-700/80 border border-amber-300 dark:border-amber-500/40 hover:border-amber-500 transition shadow-xs group cursor-pointer flex items-center justify-between gap-3">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+              <span class="text-sm font-extrabold text-slate-900 dark:text-white group-hover:text-amber-700 dark:group-hover:text-amber-400">6. فئة النخبة 4K بلا تنازلات</span>
+            </div>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5">Ryzen 7 9800X3D • RTX 5080 16GB • 32GB DDR5</p>
+          </div>
+          <span data-usd="2140" class="preset-price px-2.5 py-1 rounded-lg bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300 text-xs font-black whitespace-nowrap">
+            ~2,140$
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- VIEW 5: PREBUILT PCS & GAMING LAPTOPS DIRECT STORE (6)    -->
+    <!-- ========================================================= -->
+    <div id="view-prebuilt" class="hidden space-y-6">
+      <div class="bg-white/95 dark:bg-slate-800 p-6 rounded-2xl border border-slate-300/80 dark:border-slate-700 shadow-sm">
+        <span class="text-xs font-extrabold text-emerald-700 dark:text-emerald-400 uppercase">خيارات جاهزة للتوصيل الفوري</span>
+        <h2 class="text-xl md:text-2xl font-black text-slate-900 dark:text-white mt-1">
+          💻 حواسيب مكتبية جاهزة ولابتوبات قيمنق موصى بها
+        </h2>
+        <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">
+          إذا كنت لا ترغب في تركيب القطع يدوياً، اختر جهازاً متكاملاً بضمان الوكيل من Amazon أو AliExpress
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="bg-white/95 dark:bg-slate-800 p-5 rounded-2xl border border-slate-300/80 dark:border-slate-700 shadow-sm flex flex-col justify-between space-y-4">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="px-2.5 py-0.5 rounded-md bg-teal-100 dark:bg-teal-500/20 text-teal-800 dark:text-teal-300 text-[11px] font-extrabold">لابتوب دراسة وبرمجة</span>
+              <span data-usd="490" class="preset-price text-sm font-black text-emerald-700 dark:text-emerald-400">~490$</span>
+            </div>
+            <h3 class="text-base font-black text-slate-900 dark:text-white">Lenovo IdeaPad Slim 3 / ASUS Vivobook 15</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed">
+              معالج Ryzen 7 7730U أو Core i5-1335U، رام 16GB، تخزين 512GB NVMe، شاشة FHD خفيفة الوزن للجامعة والعمل.
+            </p>
+          </div>
+          <div class="grid grid-cols-2 gap-2 pt-2">
+            <a href="https://www.amazon.sa/s?k=Lenovo+IdeaPad+Slim+3+16GB+RAM&tag=pcbuilder-21" target="_blank" rel="noopener noreferrer"
+               class="text-center py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs transition">
+              🛒 سعر Amazon ↗
+            </a>
+            <a href="https://www.aliexpress.com/wholesale?SearchText=Lenovo%20IdeaPad%20Laptop%2016GB" target="_blank" rel="noopener noreferrer"
+               class="text-center py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs transition">
+              🌐 AliExpress ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-white/95 dark:bg-slate-800 p-5 rounded-2xl border border-slate-300/80 dark:border-slate-700 shadow-sm flex flex-col justify-between space-y-4">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="px-2.5 py-0.5 rounded-md bg-sky-100 dark:bg-sky-500/20 text-sky-800 dark:text-sky-300 text-[11px] font-extrabold">لابتوب قيمنق اقتصادي</span>
+              <span data-usd="790" class="preset-price text-sm font-black text-emerald-700 dark:text-emerald-400">~790$</span>
+            </div>
+            <h3 class="text-base font-black text-slate-900 dark:text-white">Lenovo LOQ / HP Victus 15 (RTX 4050)</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed">
+              معالج Core i5-13420H، كارت RTX 4050 6GB، شاشة 144Hz FHD، رام 16GB DDR5. أفضل قيمة لدخول عالم ألعاب اللابتوب.
+            </p>
+          </div>
+          <div class="grid grid-cols-2 gap-2 pt-2">
+            <a href="https://www.amazon.sa/s?k=Gaming+Laptop+RTX+4050&tag=pcbuilder-21" target="_blank" rel="noopener noreferrer"
+               class="text-center py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs transition">
+              🛒 سعر Amazon ↗
+            </a>
+            <a href="https://www.aliexpress.com/wholesale?SearchText=Gaming%20Laptop%20RTX%204050" target="_blank" rel="noopener noreferrer"
+               class="text-center py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs transition">
+              🌐 AliExpress ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-white/95 dark:bg-slate-800 p-5 rounded-2xl border border-slate-300/80 dark:border-slate-700 shadow-sm flex flex-col justify-between space-y-4">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="px-2.5 py-0.5 rounded-md bg-purple-100 dark:bg-purple-500/20 text-purple-800 dark:text-purple-300 text-[11px] font-extrabold">لابتوب قيمنق احترافي</span>
+              <span data-usd="1180" class="preset-price text-sm font-black text-emerald-700 dark:text-emerald-400">~1,180$</span>
+            </div>
+            <h3 class="text-base font-black text-slate-900 dark:text-white">ASUS ROG Strix G16 / Legion 5 (RTX 4060)</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed">
+              معالج Core i7-13650HX، كارت RTX 4060 8GB كامل الطاقة (140W)، شاشة 165Hz، تبريد احترافي للمونتاج الثقيل.
+            </p>
+          </div>
+          <div class="grid grid-cols-2 gap-2 pt-2">
+            <a href="https://www.amazon.sa/s?k=ASUS+ROG+Strix+RTX+4060&tag=pcbuilder-21" target="_blank" rel="noopener noreferrer"
+               class="text-center py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs transition">
+              🛒 سعر Amazon ↗
+            </a>
+            <a href="https://www.aliexpress.com/wholesale?SearchText=ASUS%20ROG%20Strix%20RTX%204060" target="_blank" rel="noopener noreferrer"
+               class="text-center py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs transition">
+              🌐 AliExpress ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-white/95 dark:bg-slate-800 p-5 rounded-2xl border border-amber-300/80 dark:border-amber-500/40 shadow-sm flex flex-col justify-between space-y-4">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="px-2.5 py-0.5 rounded-md bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300 text-[11px] font-extrabold">لابتوب النخبة 2K</span>
+              <span data-usd="1750" class="preset-price text-sm font-black text-emerald-700 dark:text-emerald-400">~1,750$</span>
+            </div>
+            <h3 class="text-base font-black text-slate-900 dark:text-white">ASUS Zephyrus G16 / Legion Pro 5 (RTX 4070 / 5070)</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed">
+              معالج Core Ultra 7 / i7-14700HX، كارت RTX 4070/5070، شاشة 2K 240Hz بألوان دقيقة للمصممين وصناع المحتوى.
+            </p>
+          </div>
+          <div class="grid grid-cols-2 gap-2 pt-2">
+            <a href="https://www.amazon.sa/s?k=Gaming+Laptop+RTX+4070+240Hz&tag=pcbuilder-21" target="_blank" rel="noopener noreferrer"
+               class="text-center py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs transition">
+              🛒 سعر Amazon ↗
+            </a>
+            <a href="https://www.aliexpress.com/wholesale?SearchText=Gaming%20Laptop%20RTX%204070" target="_blank" rel="noopener noreferrer"
+               class="text-center py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs transition">
+              🌐 AliExpress ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-white/95 dark:bg-slate-800 p-5 rounded-2xl border border-slate-300/80 dark:border-slate-700 shadow-sm flex flex-col justify-between space-y-4">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="px-2.5 py-0.5 rounded-md bg-indigo-100 dark:bg-indigo-500/20 text-indigo-800 dark:text-indigo-300 text-[11px] font-extrabold">ميني بي سي للألعاب</span>
+              <span data-usd="520" class="preset-price text-sm font-black text-emerald-700 dark:text-emerald-400">~520$</span>
+            </div>
+            <h3 class="text-base font-black text-slate-900 dark:text-white">Minisforum / Beelink Ryzen 7 8845HS Mini PC</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed">
+              حاسوب مصغّر فائق الأداء بكارت مدمج Radeon 780M، رام 32GB DDR5، قرص 1TB NVMe. مثالي للمكاتب الصغيرة والتنقل.
+            </p>
+          </div>
+          <div class="grid grid-cols-2 gap-2 pt-2">
+            <a href="https://www.amazon.sa/s?k=Ryzen+7+8845HS+Mini+PC+32GB&tag=pcbuilder-21" target="_blank" rel="noopener noreferrer"
+               class="text-center py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs transition">
+              🛒 سعر Amazon ↗
+            </a>
+            <a href="https://www.aliexpress.com/wholesale?SearchText=Ryzen%207%208845HS%20Mini%20PC%2032GB" target="_blank" rel="noopener noreferrer"
+               class="text-center py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs transition">
+              🌐 AliExpress ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-white/95 dark:bg-slate-800 p-5 rounded-2xl border border-slate-300/80 dark:border-slate-700 shadow-sm flex flex-col justify-between space-y-4">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="px-2.5 py-0.5 rounded-md bg-emerald-100 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 text-[11px] font-extrabold">جهاز مكتبي مركّب جاهز</span>
+              <span data-usd="1120" class="preset-price text-sm font-black text-emerald-700 dark:text-emerald-400">~1,120$</span>
+            </div>
+            <h3 class="text-base font-black text-slate-900 dark:text-white">Prebuilt Gaming Desktop PC (RTX 4060 Ti / 5060)</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1.5 leading-relaxed">
+              صندوق مكتبي مركّب ومختبر بالكامل مع إضاءة RGB، رام 32GB، وقرص 1TB NVMe مع نظام Windows 11 جاهز للتشغيل.
+            </p>
+          </div>
+          <div class="grid grid-cols-2 gap-2 pt-2">
+            <a href="https://www.amazon.sa/s?k=Prebuilt+Gaming+PC+RTX+4060+Ti&tag=pcbuilder-21" target="_blank" rel="noopener noreferrer"
+               class="text-center py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs transition">
+              🛒 سعر Amazon ↗
+            </a>
+            <a href="https://www.aliexpress.com/wholesale?SearchText=Gaming%20Desktop%20PC%20RTX%204060" target="_blank" rel="noopener noreferrer"
+               class="text-center py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs transition">
+              🌐 AliExpress ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- HIDDEN PRINTABLE PNG CARD TEMPLATE -->
+  <div style="position: fixed; left: -9999px; top: 0;">
+    <div id="export-card-template" class="w-[720px] bg-white text-slate-900 p-8 border-4 border-emerald-600 rounded-3xl" style="font-family: 'Cairo', sans-serif; direction: rtl;">
+      <div class="flex items-center justify-between pb-5 border-b border-slate-200">
+        <div>
+          <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-extrabold">
+            بطاقة مواصفات معتمدة • PC Builder
+          </span>
+          <h2 class="text-2xl font-black text-slate-900 mt-2">ملخص تجميعة الحاسوب المتكاملة</h2>
+        </div>
+        <div id="exp-compat-badge" class="px-4 py-2 rounded-xl bg-emerald-100 text-emerald-800 font-extrabold text-sm">
+          ✅ متوافق 100%
+        </div>
+      </div>
+
+      <div class="my-6 bg-slate-50 rounded-2xl border border-slate-200 divide-y divide-slate-200 text-sm">
+        <div class="flex justify-between items-center px-5 py-3">
+          <span class="text-slate-600 font-bold">المعالج (CPU):</span>
+          <span id="exp-cpu" class="font-extrabold text-slate-900">---</span>
+        </div>
+        <div class="flex justify-between items-center px-5 py-3">
+          <span class="text-slate-600 font-bold">مبرد المعالج (Cooler):</span>
+          <span id="exp-cooler" class="font-extrabold text-sky-700">---</span>
+        </div>
+        <div class="flex justify-between items-center px-5 py-3">
+          <span class="text-slate-600 font-bold">اللوحة الأم (Motherboard):</span>
+          <span id="exp-mb" class="font-extrabold text-slate-900">---</span>
+        </div>
+        <div class="flex justify-between items-center px-5 py-3">
+          <span class="text-slate-600 font-bold">الذاكرة (RAM):</span>
+          <span id="exp-ram" class="font-extrabold text-slate-900">---</span>
+        </div>
+        <div class="flex justify-between items-center px-5 py-3">
+          <span class="text-slate-600 font-bold">كارت الشاشة (GPU):</span>
+          <span id="exp-gpu" class="font-extrabold text-sky-700">---</span>
+        </div>
+        <div class="flex justify-between items-center px-5 py-3">
+          <span class="text-slate-600 font-bold">التخزين (SSD / HDD):</span>
+          <span id="exp-storage" class="font-extrabold text-slate-900">---</span>
+        </div>
+        <div class="flex justify-between items-center px-5 py-3">
+          <span class="text-slate-600 font-bold">مزود الطاقة (PSU):</span>
+          <span id="exp-psu" class="font-extrabold text-emerald-700">---</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-4 gap-3 mb-6">
+        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 text-center">
+          <span class="text-[11px] text-slate-500 font-bold block">EA FC 26</span>
+          <span id="exp-fps-fc" class="text-lg font-black text-emerald-700">-- FPS</span>
+        </div>
+        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 text-center">
+          <span class="text-[11px] text-slate-500 font-bold block">Valorant / CS2</span>
+          <span id="exp-fps-cs" class="text-lg font-black text-emerald-700">-- FPS</span>
+        </div>
+        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 text-center">
+          <span class="text-[11px] text-slate-500 font-bold block">GTA V</span>
+          <span id="exp-fps-gta" class="text-lg font-black text-sky-700">-- FPS</span>
+        </div>
+        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 text-center">
+          <span class="text-[11px] text-slate-500 font-bold block">Cyberpunk 2077</span>
+          <span id="exp-fps-aaa" class="text-lg font-black text-amber-700">-- FPS</span>
+        </div>
+      </div>
+
+      <div class="bg-emerald-50 p-5 rounded-2xl border border-emerald-200 flex items-center justify-between">
+        <div>
+          <span class="text-xs text-slate-600 font-bold block">التكلفة الإجمالية التقديرية:</span>
+          <div class="flex items-baseline gap-3 mt-1">
+            <span id="exp-local" class="text-3xl font-black text-emerald-800">~0 $</span>
+            <span id="exp-usd" class="text-base font-extrabold text-slate-600"></span>
+          </div>
+        </div>
+        <div class="text-left">
+          <span class="text-xs font-extrabold text-emerald-700 block">تم التجميع والفحص عبر منصتنا</span>
+          <span id="exp-site-url" class="text-xs text-slate-500 font-mono mt-0.5 block">pcbuilder-ar.netlify.app</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let database = { cpus: [], motherboards: [], rams: [], gpus: [], storages: [], coolers: [], psus: [] };
+    let vsCategory = 'cpus';
+
+    const AMAZON_AFFILIATE_TAG = "pcbuilder-21";
+
+    const selects = {
+      cpu: document.getElementById('select-cpu'),
+      cooler: document.getElementById('select-cooler'),
+      mb: document.getElementById('select-mb'),
+      ram: document.getElementById('select-ram'),
+      gpu: document.getElementById('select-gpu'),
+      storage: document.getElementById('select-storage'),
+      psu: document.getElementById('select-psu')
+    };
+
+    const upgSelects = {
+      cpu: document.getElementById('upg-curr-cpu'),
+      mb: document.getElementById('upg-curr-mb'),
+      ram: document.getElementById('upg-curr-ram'),
+      gpu: document.getElementById('upg-curr-gpu')
+    };
+
+    const monitorCatalog = {
+      entry: {
+        badge: "1080p FHD • 144Hz - 180Hz IPS",
+        desc: "دقة Full HD تمنحك أعلى سلاسة واستجابة سريعة للألعاب التنافسية والعمل اليومي.",
+        items: [
+          { name: "AOC 24G4 / 24G2SP 24\" IPS 180Hz 1ms", price_usd: 135, ali_url: "https://www.aliexpress.com/wholesale?SearchText=AOC%2024G4%20180Hz%20Monitor" },
+          { name: "MSI G244F E2 24\" Rapid IPS 180Hz", price_usd: 145, ali_url: "https://www.aliexpress.com/wholesale?SearchText=MSI%20G244F%20180Hz%20Monitor" }
+        ]
+      },
+      mid: {
+        badge: "1080p 240Hz أو 2K QHD 165Hz",
+        desc: "كارت الشاشة لديك قادر على تشغيل الألعاب بدقة 2K بسلاسة أو 1080p بمعدل إطارات فائق.",
+        items: [
+          { name: "ASUS TUF Gaming VG27AQ 27\" 2K IPS 165Hz", price_usd: 245, ali_url: "https://www.aliexpress.com/wholesale?SearchText=ASUS%20VG27AQ%202K%20Monitor" },
+          { name: "LG UltraGear 27GR75Q 27\" QHD 165Hz 1ms", price_usd: 255, ali_url: "https://www.aliexpress.com/wholesale?SearchText=LG%2027GR75Q%202K%20Monitor" }
+        ]
+      },
+      ultra: {
+        badge: "2K QHD 240Hz أو 4K UHD 144Hz",
+        desc: "تجميعتك من الفئة العليا وتستحق شاشة 2K سريعة أو 4K لإظهار كامل التفاصيل الرسومية.",
+        items: [
+          { name: "MSI MAG 274UPF 27\" 4K UHD Rapid IPS 144Hz", price_usd: 420, ali_url: "https://www.aliexpress.com/wholesale?SearchText=MSI%20MAG%20274UPF%204K%20Monitor" },
+          { name: "Gigabyte M27Q X 27\" 2K QHD 240Hz IPS", price_usd: 390, ali_url: "https://www.aliexpress.com/wholesale?SearchText=Gigabyte%20M27Q%202K%20Monitor" }
+        ]
+      }
+    };
+
+    function getCurrencyInfo() {
+      const sel = document.getElementById('currency-select');
+      const opt = sel.options[sel.selectedIndex];
+      return {
+        code: sel.value,
+        rate: parseFloat(opt.getAttribute('data-rate')) || 1,
+        symbol: opt.getAttribute('data-symbol') || '$'
+      };
+    }
+
+    function formatLocalPrice(usdAmount) {
+      const curr = getCurrencyInfo();
+      if (curr.code === 'USD') return `${Math.round(usdAmount).toLocaleString('en-US')}$`;
+      const converted = Math.round(usdAmount * curr.rate);
+      return `${converted.toLocaleString('en-US')} ${curr.symbol}`;
+    }
+
+    function getAmazonUrl(part) {
+      if (part.amazon_url) return part.amazon_url;
+      const curr = getCurrencyInfo().code;
+      const domain = curr === 'AED' ? 'amazon.ae' : 'amazon.sa';
+      const query = encodeURIComponent(part.name.split('(')[0].trim());
+      return `https://www.${domain}/s?k=${query}&tag=${AMAZON_AFFILIATE_TAG}`;
+    }
+
+    const themeBtn = document.getElementById('btn-theme-toggle');
+    themeBtn.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      const isDark = document.documentElement.classList.contains('dark');
+      themeBtn.textContent = isDark ? '☀️ وضع فاتح' : '🌙 وضع داكن';
+    });
+
+    const buildPresets = {
+      eco_tier: {
+        label: 'تجميعة الدراسة والألعاب الخفيفة',
+        parts: { cpu: 'r5_5600gt', cooler: 'stock_cooler', mb: 'a520m_a_pro', ram: 'ram_16_d4', gpu: 'none', storage: 'nvme_256', psu: 'psu_450w_bronze' }
+      },
+      budget_gpu: {
+        label: 'تجميعة اقتصادية بكارت منفصل',
+        parts: { cpu: 'i3_12100f', cooler: 'stock_cooler', mb: 'h610m_e', ram: 'ram_16_d4', gpu: 'gtx1660_super', storage: 'combo_256_1tb', psu: 'psu_550w_bronze' }
+      },
+      gaming_mid: {
+        label: 'تجميعة قيمنق 1080p مثالية',
+        parts: { cpu: 'r5_5600', cooler: 'single_tower_argb', mb: 'b550m_ds3h', ram: 'ram_16_d4', gpu: 'rx6600_8g', storage: 'nvme_512', psu: 'psu_550w_bronze' }
+      },
+      am5_value: {
+        label: 'تجميعة الجيل الجديد AM5 اقتصادية',
+        parts: { cpu: 'r5_7500f', cooler: 'single_tower_argb', mb: 'b650m_gaming_wifi', ram: 'ram_16_d5', gpu: 'arc_b580_12g', storage: 'nvme_1tb', psu: 'psu_650w_bronze' }
+      },
+      rtx50_2k: {
+        label: 'تجميعة 2K حديثة (RTX 5070)',
+        parts: { cpu: 'r5_9600x', cooler: 'dual_tower_pro', mb: 'b650m_gaming_wifi', ram: 'ram_32_d5', gpu: 'rtx5070_12g', storage: 'nvme_1tb', psu: 'psu_750w_gold' }
+      },
+      gulf_ultra: {
+        label: 'تجميعة النخبة 4K بلا تنازلات',
+        parts: { cpu: 'r7_9800x3d', cooler: 'aio_360_liquid', mb: 'b850_tomahawk_wifi', ram: 'ram_32_d5', gpu: 'rtx5080_16g', storage: 'nvme_2tb', psu: 'psu_1000w_gold' }
+      }
+    };
+
+    document.querySelectorAll('.preset-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const preset = buildPresets[btn.getAttribute('data-preset')];
+        if (!preset) return;
+        document.getElementById('parts-search-input').value = '';
+        refreshAllDropdowns('');
+
+        Object.keys(preset.parts).forEach(key => {
+          if (selects[key]) selects[key].value = preset.parts[key];
+        });
+        switchTab('builder');
+        evaluateBuild();
+        showAutoMsg(`⚡ تم تحميل "${preset.label}" بنجاح.`, 'success');
+      });
+    });
+
+    const tabButtons = {
+      builder: document.getElementById('tab-btn-builder'),
+      vs: document.getElementById('tab-btn-vs'),
+      upgrade: document.getElementById('tab-btn-upgrade'),
+      presets: document.getElementById('tab-btn-presets'),
+      prebuilt: document.getElementById('tab-btn-prebuilt')
+    };
+    const views = {
+      builder: document.getElementById('view-builder'),
+      vs: document.getElementById('view-vs'),
+      upgrade: document.getElementById('view-upgrade'),
+      presets: document.getElementById('view-presets'),
+      prebuilt: document.getElementById('view-prebuilt')
+    };
+
+    function switchTab(activeKey) {
+      Object.keys(views).forEach(key => views[key].classList.toggle('hidden', key !== activeKey));
+      const activeStyles = {
+        builder: 'bg-emerald-600 text-white shadow-sm',
+        vs: 'bg-sky-600 text-white shadow-sm',
+        upgrade: 'bg-amber-500 text-slate-950 shadow-sm',
+        presets: 'bg-teal-600 text-white shadow-sm',
+        prebuilt: 'bg-purple-600 text-white shadow-sm'
+      };
+      Object.keys(tabButtons).forEach(key => {
+        tabButtons[key].className = key === activeKey
+          ? `px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer ${activeStyles[key]}`
+          : 'px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white';
+      });
+      if (activeKey === 'vs') runVsComparison();
+      if (activeKey === 'upgrade') analyzeUpgrades();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    tabButtons.builder.addEventListener('click', () => switchTab('builder'));
+    tabButtons.vs.addEventListener('click', () => switchTab('vs'));
+    tabButtons.upgrade.addEventListener('click', () => switchTab('upgrade'));
+    tabButtons.presets.addEventListener('click', () => switchTab('presets'));
+    tabButtons.prebuilt.addEventListener('click', () => switchTab('prebuilt'));
+
+    async function initApp() {
+      try {
+        const response = await fetch('parts.json');
+        if (!response.ok) throw new Error('HTTP error');
+        database = await response.json();
+
+        refreshAllDropdowns('');
+        populateDropdown(upgSelects.cpu, database.cpus, false, '');
+        populateDropdown(upgSelects.mb, database.motherboards, false, '');
+        populateDropdown(upgSelects.ram, database.rams, false, '');
+        populateDropdown(upgSelects.gpu, database.gpus, false, '');
+
+        if (database.cpus.find(c => c.id === 'r5_5600g')) upgSelects.cpu.value = 'r5_5600g';
+        if (database.motherboards.find(m => m.id === 'b450m_k')) upgSelects.mb.value = 'b450m_k';
+        if (database.rams.find(r => r.id === 'ram_16_d4')) upgSelects.ram.value = 'ram_16_d4';
+        if (database.gpus.find(g => g.id === 'none')) upgSelects.gpu.value = 'none';
+
+        setupVsDropdowns('cpus', '');
+        updateCurrencyUI();
+        loadFromURL();
+        evaluateBuild();
+      } catch (err) {
+        document.getElementById('fetch-error').classList.remove('hidden');
+      }
+    }
+
+    function refreshAllDropdowns(filterText) {
+      const currentValues = {};
+      Object.keys(selects).forEach(k => currentValues[k] = selects[k].value);
+
+      populateDropdown(selects.cpu, database.cpus, true, filterText);
+      populateDropdown(selects.cooler, database.coolers, true, filterText);
+      populateDropdown(selects.mb, database.motherboards, true, filterText);
+      populateDropdown(selects.ram, database.rams, true, filterText);
+      populateDropdown(selects.gpu, database.gpus, true, filterText);
+      populateDropdown(selects.storage, database.storages, true, filterText);
+      populateDropdown(selects.psu, database.psus, true, filterText);
+
+      Object.keys(selects).forEach(k => { if (currentValues[k]) selects[k].value = currentValues[k]; });
+    }
+
+    function populateDropdown(el, items, showPrice = true, filterText = '') {
+      const query = filterText.trim().toLowerCase();
+      el.innerHTML = showPrice ? '<option value="">-- اختر من القائمة --</option>' : '';
+      items.forEach(item => {
+        if (query && !item.name.toLowerCase().includes(query) && item.id !== 'none' && item.id !== 'stock_cooler') return;
+        const opt = document.createElement('option');
+        opt.value = item.id;
+        opt.textContent = showPrice ? `${item.name} (~${formatLocalPrice(item.price_usd)})` : item.name;
+        el.appendChild(opt);
+      });
+    }
+
+    const searchInput = document.getElementById('parts-search-input');
+    const clearSearchBtn = document.getElementById('btn-clear-search');
+
+    searchInput.addEventListener('input', () => {
+      const val = searchInput.value;
+      clearSearchBtn.classList.toggle('hidden', !val);
+      refreshAllDropdowns(val);
+    });
+
+    clearSearchBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      clearSearchBtn.classList.add('hidden');
+      refreshAllDropdowns('');
+    });
+
+    document.getElementById('currency-select').addEventListener('change', () => {
+      updateCurrencyUI();
+      refreshAllDropdowns(searchInput.value);
+      setupVsDropdowns(vsCategory, document.getElementById('vs-search-input').value);
+      evaluateBuild();
+      if (!views.upgrade.classList.contains('hidden')) analyzeUpgrades();
+    });
+
+    function updateCurrencyUI() {
+      const curr = getCurrencyInfo();
+      document.querySelectorAll('.curr-label').forEach(el => el.textContent = curr.symbol);
+      document.querySelectorAll('.preset-price').forEach(el => {
+        const usd = parseFloat(el.getAttribute('data-usd'));
+        el.textContent = `~${formatLocalPrice(usd)}`;
+      });
+
+      const budgetEl = document.getElementById('budget-input');
+      const upgBudgetEl = document.getElementById('upg-budget');
+      if (curr.code === 'USD') { budgetEl.value = 650; upgBudgetEl.value = 250; }
+      else if (curr.code === 'KWD') { budgetEl.value = 200; upgBudgetEl.value = 80; }
+      else if (curr.code === 'DZD') { budgetEl.value = 150000; upgBudgetEl.value = 60000; }
+      else { budgetEl.value = 2400; upgBudgetEl.value = 900; }
+
+      const amzDomain = curr.code === 'AED' ? 'amazon.ae' : 'amazon.sa';
+      document.querySelectorAll('a[href*="amazon."]').forEach(link => {
+        link.href = link.href.replace(/amazon\.(sa|ae)/, amzDomain).replace(/tag=[^&]+/, `tag=${AMAZON_AFFILIATE_TAG}`);
+      });
+    }
+
+    const vsCatCpuBtn = document.getElementById('vs-cat-cpu');
+    const vsCatGpuBtn = document.getElementById('vs-cat-gpu');
+    const vsSelectA = document.getElementById('vs-select-a');
+    const vsSelectB = document.getElementById('vs-select-b');
+    const vsSearchInput = document.getElementById('vs-search-input');
+
+    vsSearchInput.addEventListener('input', () => setupVsDropdowns(vsCategory, vsSearchInput.value));
+
+    vsCatCpuBtn.addEventListener('click', () => {
+      vsCategory = 'cpus';
+      vsCatCpuBtn.className = "px-4 py-1.5 rounded-lg text-xs font-extrabold bg-sky-600 text-white cursor-pointer transition";
+      vsCatGpuBtn.className = "px-4 py-1.5 rounded-lg text-xs font-extrabold text-slate-600 dark:text-slate-400 cursor-pointer transition";
+      setupVsDropdowns('cpus', vsSearchInput.value);
+    });
+
+    vsCatGpuBtn.addEventListener('click', () => {
+      vsCategory = 'gpus';
+      vsCatGpuBtn.className = "px-4 py-1.5 rounded-lg text-xs font-extrabold bg-sky-600 text-white cursor-pointer transition";
+      vsCatCpuBtn.className = "px-4 py-1.5 rounded-lg text-xs font-extrabold text-slate-600 dark:text-slate-400 cursor-pointer transition";
+      setupVsDropdowns('gpus', vsSearchInput.value);
+    });
+
+    function setupVsDropdowns(cat, filterText = '') {
+      const query = filterText.trim().toLowerCase();
+      const rawItems = cat === 'cpus' ? database.cpus : database.gpus.filter(g => g.id !== 'none');
+      const items = query ? rawItems.filter(i => i.name.toLowerCase().includes(query)) : rawItems;
+
+      const prevA = vsSelectA.value;
+      const prevB = vsSelectB.value;
+      vsSelectA.innerHTML = '';
+      vsSelectB.innerHTML = '';
+
+      items.forEach(item => {
+        const optA = document.createElement('option');
+        optA.value = item.id;
+        optA.textContent = `${item.name} (${formatLocalPrice(item.price_usd)})`;
+        vsSelectA.appendChild(optA);
+
+        const optB = document.createElement('option');
+        optB.value = item.id;
+        optB.textContent = `${item.name} (${formatLocalPrice(item.price_usd)})`;
+        vsSelectB.appendChild(optB);
+      });
+
+      if (items.find(i => i.id === prevA)) vsSelectA.value = prevA;
+      else if (cat === 'cpus' && items.find(i => i.id === 'r7_9800x3d')) vsSelectA.value = 'r7_9800x3d';
+      else if (cat === 'gpus' && items.find(i => i.id === 'rtx5070_12g')) vsSelectA.value = 'rtx5070_12g';
+
+      if (items.find(i => i.id === prevB)) vsSelectB.value = prevB;
+      else if (cat === 'cpus' && items.find(i => i.id === 'i7_14700kf')) vsSelectB.value = 'i7_14700kf';
+      else if (cat === 'gpus' && items.find(i => i.id === 'rx9070_xt_16g')) vsSelectB.value = 'rx9070_xt_16g';
+
+      runVsComparison();
+    }
+
+    vsSelectA.addEventListener('change', runVsComparison);
+    vsSelectB.addEventListener('change', runVsComparison);
+
+    function runVsComparison() {
+      const items = vsCategory === 'cpus' ? database.cpus : database.gpus;
+      const itemA = items.find(i => i.id === vsSelectA.value);
+      const itemB = items.find(i => i.id === vsSelectB.value);
+      if (!itemA || !itemB) return;
+
+      document.getElementById('vs-a-name').textContent = itemA.name;
+      document.getElementById('vs-a-local').textContent = formatLocalPrice(itemA.price_usd);
+      document.getElementById('vs-a-usd').textContent = `~${itemA.price_usd}$`;
+      document.getElementById('vs-a-score-text').textContent = `${itemA.score} / 100`;
+      document.getElementById('vs-a-score-bar').style.width = `${itemA.score}%`;
+      document.getElementById('vs-a-tdp').textContent = `${itemA.tdp} W`;
+      const valA = (itemA.score / itemA.price_usd).toFixed(2);
+      document.getElementById('vs-a-value').textContent = `${valA} نقطة/$`;
+      document.getElementById('vs-a-link').href = itemA.affiliate_url || '#';
+      document.getElementById('vs-a-amz').href = getAmazonUrl(itemA);
+      document.getElementById('vs-a-extra').textContent = vsCategory === 'cpus'
+        ? `المقبس: ${itemA.socket} • كارت مدمج: ${itemA.igpu_score > 0 ? 'نعم' : 'لا (يتطلب كارت منفصل)'}`
+        : `الباور المقترح: ${Math.max(450, Math.ceil((itemA.tdp + 230) / 50) * 50)}W`;
+
+      document.getElementById('vs-b-name').textContent = itemB.name;
+      document.getElementById('vs-b-local').textContent = formatLocalPrice(itemB.price_usd);
+      document.getElementById('vs-b-usd').textContent = `~${itemB.price_usd}$`;
+      document.getElementById('vs-b-score-text').textContent = `${itemB.score} / 100`;
+      document.getElementById('vs-b-score-bar').style.width = `${itemB.score}%`;
+      document.getElementById('vs-b-tdp').textContent = `${itemB.tdp} W`;
+      const valB = (itemB.score / itemB.price_usd).toFixed(2);
+      document.getElementById('vs-b-value').textContent = `${valB} نقطة/$`;
+      document.getElementById('vs-b-link').href = itemB.affiliate_url || '#';
+      document.getElementById('vs-b-amz').href = getAmazonUrl(itemB);
+      document.getElementById('vs-b-extra').textContent = vsCategory === 'cpus'
+        ? `المقبس: ${itemB.socket} • كارت مدمج: ${itemB.igpu_score > 0 ? 'نعم' : 'لا (يتطلب كارت منفصل)'}`
+        : `الباور المقترح: ${Math.max(450, Math.ceil((itemB.tdp + 230) / 50) * 50)}W`;
+
+      const titleEl = document.getElementById('vs-verdict-title');
+      const descEl = document.getElementById('vs-verdict-desc');
+      const badgeEl = document.getElementById('vs-value-badge');
+
+      if (itemA.id === itemB.id) {
+        titleEl.textContent = "اخترت نفس القطعة في الجانبين";
+        descEl.textContent = "يرجى تغيير أحد الخيارين لإظهار الفارق في الأداء والسعر.";
+        badgeEl.textContent = "متطابقان";
+        return;
+      }
+
+      const stronger = itemA.score >= itemB.score ? itemA : itemB;
+      const weaker = itemA.score >= itemB.score ? itemB : itemA;
+      const perfDiffPct = Math.round(((stronger.score - weaker.score) / weaker.score) * 100);
+      const priceDiffUsd = stronger.price_usd - weaker.price_usd;
+      const bestValueItem = parseFloat(valA) >= parseFloat(valB) ? itemA : itemB;
+
+      badgeEl.textContent = `🏆 الأفضل قيمة: ${bestValueItem.name}`;
+
+      if (perfDiffPct === 0) {
+        titleEl.textContent = `تعادل في الأداء الخام بين ${itemA.name} و ${itemB.name}`;
+        descEl.textContent = `يُنصح بشراء الخيار الأرخص (${bestValueItem.name}) لتوفير الميزانية.`;
+      } else if (priceDiffUsd <= 0) {
+        titleEl.textContent = `تفوق كاسح لصالح ${stronger.name}`;
+        descEl.textContent = `يتفوق في الأداء بنسبة +${perfDiffPct}% وبسعر أرخص بـ ${formatLocalPrice(Math.abs(priceDiffUsd))}!`;
+      } else {
+        titleEl.textContent = `${stronger.name} أقوى بنسبة +${perfDiffPct}% من ${weaker.name}`;
+        descEl.textContent = `للحصول على هذا الفارق ستدفع ${formatLocalPrice(priceDiffUsd)} إضافية. من حيث السعر مقابل الأداء يتفوق ${bestValueItem.name}.`;
+      }
+    }
+
+    // Auto-Builder by Budget (Excludes standalone HDDs)
+    document.getElementById('btn-auto-build').addEventListener('click', () => {
+      const rawBudget = parseFloat(document.getElementById('budget-input').value);
+      const goal = document.getElementById('budget-goal').value;
+      const curr = getCurrencyInfo();
+
+      if (!rawBudget || rawBudget <= 0) {
+        showAutoMsg('يرجى إدخال ميزانية صحيحة.', 'error');
+        return;
+      }
+
+      const targetUsd = rawBudget / curr.rate;
+      let bestBuild = null;
+      let highestUtility = -1;
+      const autoStorages = database.storages.filter(s => s.type !== 'HDD');
+
+      for (const cpu of database.cpus) {
+        const validCoolers = database.coolers.filter(c => c.max_tdp >= cpu.tdp);
+        for (const cooler of validCoolers) {
+          for (const mb of database.motherboards) {
+            if (cpu.socket !== mb.socket) continue;
+            for (const ram of database.rams) {
+              if (mb.ram_type !== ram.type) continue;
+              for (const gpu of database.gpus) {
+                if (gpu.id === 'none' && cpu.igpu_score === 0) continue;
+                for (const storage of autoStorages) {
+                  const baseTdp = cpu.tdp + cooler.tdp + mb.tdp + ram.tdp + gpu.tdp + storage.tdp;
+                  const minRequiredPsu = Math.max(450, baseTdp + 120);
+                  const validPsus = database.psus.filter(p => p.wattage >= minRequiredPsu);
+                  for (const psu of validPsus) {
+                    const totalCost = cpu.price_usd + cooler.price_usd + mb.price_usd + ram.price_usd + gpu.price_usd + storage.price_usd + psu.price_usd;
+                    if (totalCost <= targetUsd) {
+                      const effectiveGpu = gpu.id === 'none' ? cpu.igpu_score : gpu.score;
+                      const ramPoints = ram.capacity_gb >= 32 ? 12 : (ram.capacity_gb >= 16 ? 6 : 1);
+
+                      let storagePoints = 3;
+                      if (storage.id === 'nvme_2tb') storagePoints = 11;
+                      else if (storage.id === 'combo_512_2tb') storagePoints = 9;
+                      else if (storage.id === 'nvme_1tb') storagePoints = 8;
+                      else if (storage.id === 'combo_256_1tb') storagePoints = 6;
+                      else if (storage.id === 'nvme_512') storagePoints = 5;
+
+                      const coolerBonus = cooler.id !== 'stock_cooler' ? 2 : 0;
+
+                      let utility = goal === 'gaming'
+                        ? (effectiveGpu * 1.6) + (cpu.score * 0.7) + ramPoints + storagePoints + coolerBonus - ((gpu.id !== 'none' && (effectiveGpu - cpu.score) > 15) ? 15 : 0)
+                        : (cpu.score * 1.5) + (effectiveGpu * 0.7) + (ramPoints * 1.8) + storagePoints + coolerBonus;
+
+                      if (utility > highestUtility || (utility === highestUtility && bestBuild && totalCost > bestBuild.cost)) {
+                        highestUtility = utility;
+                        bestBuild = { cpu, cooler, mb, ram, gpu, storage, psu, cost: totalCost };
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      if (!bestBuild) {
+        showAutoMsg(`⚠️ الميزانية المدخلة أقل من أرخص تجميعة متكاملة متوفرة (تبدأ من حوالي ${formatLocalPrice(190)}).`, 'error');
+        return;
+      }
+
+      searchInput.value = '';
+      refreshAllDropdowns('');
+
+      selects.cpu.value = bestBuild.cpu.id;
+      selects.cooler.value = bestBuild.cooler.id;
+      selects.mb.value = bestBuild.mb.id;
+      selects.ram.value = bestBuild.ram.id;
+      selects.gpu.value = bestBuild.gpu.id;
+      selects.storage.value = bestBuild.storage.id;
+      selects.psu.value = bestBuild.psu.id;
+
+      evaluateBuild();
+      showAutoMsg(`✅ تم اختيار أفضل تجميعة متكاملة بتكلفة ~${formatLocalPrice(bestBuild.cost)}.`, 'success');
+    });
+
+    function showAutoMsg(text, type) {
+      const msgEl = document.getElementById('auto-build-msg');
+      msgEl.className = type === 'error'
+        ? 'mt-3 text-xs font-bold px-3.5 py-2.5 rounded-xl bg-rose-50 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-500/40'
+        : 'mt-3 text-xs font-bold px-3.5 py-2.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-500/40';
+      msgEl.textContent = text;
+    }
+
+    document.getElementById('btn-analyze-upgrade').addEventListener('click', analyzeUpgrades);
+
+    function analyzeUpgrades() {
+      const currCpu = database.cpus.find(c => c.id === upgSelects.cpu.value);
+      const currMb = database.motherboards.find(m => m.id === upgSelects.mb.value);
+      const currRam = database.rams.find(r => r.id === upgSelects.ram.value);
+      const currGpu = database.gpus.find(g => g.id === upgSelects.gpu.value);
+      const rawBudget = parseFloat(document.getElementById('upg-budget').value);
+      const goal = document.getElementById('upg-goal').value;
+      const curr = getCurrencyInfo();
+
+      const container = document.getElementById('upg-results-container');
+      container.classList.remove('hidden');
+      container.innerHTML = '';
+
+      if (!currCpu || !currMb || !currRam || !currGpu || !rawBudget) return;
+      const budgetUsd = rawBudget / curr.rate;
+
+      function calcRigScore(cpu, gpu, ram) {
+        const effGpu = gpu.id === 'none' ? cpu.igpu_score : gpu.score;
+        const ramScore = ram.capacity_gb >= 32 ? 15 : (ram.capacity_gb >= 16 ? 7 : 1);
+        return goal === 'gaming'
+          ? (effGpu * 1.6) + (cpu.score * 0.65) + ramScore
+          : (cpu.score * 1.55) + (effGpu * 0.65) + (ramScore * 1.8);
+      }
+
+      const baseScore = calcRigScore(currCpu, currGpu, currRam);
+      const baseEffGpu = currGpu.id === 'none' ? currCpu.igpu_score : currGpu.score;
+      let candidates = [];
+
+      database.gpus.forEach(newGpu => {
+        if (newGpu.id !== 'none' && newGpu.id !== currGpu.id && newGpu.price_usd <= budgetUsd && newGpu.score > baseEffGpu) {
+          const gainPct = Math.round(((calcRigScore(currCpu, newGpu, currRam) - baseScore) / baseScore) * 100);
+          if (gainPct > 3) candidates.push({ type: 'ترقية كارت الشاشة (GPU)', title: `الترقية إلى ${newGpu.name}`, desc: `يرفع الأداء الرسومي والفريمات بشكل ملحوظ مع معالجك الحالي.`, costUsd: newGpu.price_usd, gainPct, part: newGpu });
+        }
+      });
+
+      database.cpus.forEach(newCpu => {
+        if (newCpu.id !== currCpu.id && newCpu.socket === currMb.socket && newCpu.price_usd <= budgetUsd && newCpu.score > currCpu.score) {
+          if (currGpu.id === 'none' && newCpu.igpu_score === 0) return;
+          const gainPct = Math.round(((calcRigScore(newCpu, currGpu, currRam) - baseScore) / baseScore) * 100);
+          if (gainPct > 3) candidates.push({ type: 'ترقية المعالج (CPU)', title: `استبدال المعالج بـ ${newCpu.name}`, desc: `متوافق مع نفس لوحتك الأم (${currMb.name}) دون تغيير اللوحة أو الرام.`, costUsd: newCpu.price_usd, gainPct, part: newCpu });
+        }
+      });
+
+      database.rams.forEach(newRam => {
+        if (newRam.id !== currRam.id && newRam.type === currMb.ram_type && newRam.price_usd <= budgetUsd && newRam.capacity_gb > currRam.capacity_gb) {
+          const gainPct = Math.round(((calcRigScore(currCpu, currGpu, newRam) - baseScore) / baseScore) * 100);
+          if (gainPct > 1) candidates.push({ type: 'ترقية الذاكرة (RAM)', title: `رفع السعة إلى ${newRam.name}`, desc: `يسرّع المونتاج وتعدد المهام ويمنع التقطيع في الألعاب الحديثة.`, costUsd: newRam.price_usd, gainPct, part: newRam });
+        }
+      });
+
+      candidates.sort((a, b) => b.gainPct - a.gainPct);
+      if (candidates.length === 0) {
+        container.innerHTML = `<div class="p-5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-center text-sm font-bold text-slate-600 dark:text-slate-300">لم يتم العثور على ترقية متوافقة ضمن ميزانية ${formatLocalPrice(budgetUsd)}.</div>`;
+        return;
+      }
+
+      candidates.slice(0, 3).forEach((opt, idx) => {
+        const card = document.createElement('div');
+        card.className = idx === 0
+          ? 'p-6 rounded-2xl bg-white dark:bg-slate-800 border-2 border-emerald-500 shadow-sm space-y-3'
+          : 'p-5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 shadow-xs space-y-3';
+        card.innerHTML = `
+          <div class="flex flex-wrap justify-between items-center gap-2">
+            <div>
+              <span class="text-xs font-extrabold text-emerald-700 dark:text-emerald-400">${idx === 0 ? '🏆 التوصية الأولى' : 'خيار بديل'} • ${opt.type}</span>
+              <h3 class="text-lg font-black text-slate-900 dark:text-white mt-0.5">${opt.title}</h3>
+            </div>
+            <div class="flex items-center gap-3 bg-slate-100 dark:bg-slate-900 px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-700">
+              <span class="text-sm font-black text-emerald-600 dark:text-emerald-400">+${opt.gainPct}% أداء</span>
+              <span class="text-sm font-extrabold text-slate-900 dark:text-white">${formatLocalPrice(opt.costUsd)}</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-300">${opt.desc}</p>
+          <div class="flex flex-wrap gap-2 pt-2">
+            <a href="${getAmazonUrl(opt.part)}" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs transition">🛒 اطلبه من Amazon ↗</a>
+            <a href="${opt.part.affiliate_url}" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs transition">🌐 اطلبه من AliExpress ↗</a>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    document.getElementById('btn-export-png').addEventListener('click', async () => {
+      const cpu = database.cpus.find(i => i.id === selects.cpu.value);
+      const cooler = database.coolers.find(i => i.id === selects.cooler.value);
+      const mb = database.motherboards.find(i => i.id === selects.mb.value);
+      const ram = database.rams.find(i => i.id === selects.ram.value);
+      const gpu = database.gpus.find(i => i.id === selects.gpu.value);
+      const storage = database.storages.find(i => i.id === selects.storage.value);
+      const psu = database.psus.find(i => i.id === selects.psu.value);
+
+      if (!cpu || !mb || !ram) {
+        alert('يرجى اختيار المعالج واللوحة الأم والرام على الأقل قبل تصدير الصورة.');
+        return;
+      }
+
+      document.getElementById('exp-cpu').textContent = cpu.name;
+      document.getElementById('exp-cooler').textContent = cooler ? cooler.name : 'المبرد القياسي (Stock)';
+      document.getElementById('exp-mb').textContent = mb.name;
+      document.getElementById('exp-ram').textContent = ram.name;
+      document.getElementById('exp-gpu').textContent = gpu ? gpu.name : 'غير محدد';
+      document.getElementById('exp-storage').textContent = storage ? storage.name : 'غير محدد';
+      document.getElementById('exp-psu').textContent = psu ? psu.name : document.getElementById('recommended-psu').textContent;
+      document.getElementById('exp-fps-fc').textContent = document.getElementById('fps-fc').textContent;
+      document.getElementById('exp-fps-cs').textContent = document.getElementById('fps-esports').textContent;
+      document.getElementById('exp-fps-gta').textContent = document.getElementById('fps-gta').textContent;
+      document.getElementById('exp-fps-aaa').textContent = document.getElementById('fps-aaa').textContent;
+      document.getElementById('exp-local').textContent = document.getElementById('total-local').textContent;
+      document.getElementById('exp-usd').textContent = getCurrencyInfo().code !== 'USD' ? `(~${document.getElementById('total-usd').textContent} $)` : '';
+      document.getElementById('exp-compat-badge').textContent = document.getElementById('status-badge').textContent;
+
+      const canvas = await html2canvas(document.getElementById('export-card-template'), { scale: 2, backgroundColor: '#ffffff' });
+      const link = document.createElement('a');
+      link.download = `PC-Build-${cpu.id}.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    });
+
+    function loadFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      Object.keys(selects).forEach(key => { if (params.get(key)) selects[key].value = params.get(key); });
+    }
+
+    document.getElementById('btn-share').addEventListener('click', () => {
+      const url = new URL(window.location.href);
+      Object.keys(selects).forEach(key => {
+        if (selects[key].value) url.searchParams.set(key, selects[key].value);
+        else url.searchParams.delete(key);
+      });
+      navigator.clipboard.writeText(url.toString());
+      const btn = document.getElementById('btn-share');
+      btn.textContent = '✅ تم النسخ!';
+      setTimeout(() => btn.textContent = '🔗 نسخ الرابط', 2000);
+    });
+
+    Object.values(selects).forEach(el => el.addEventListener('change', evaluateBuild));
+
+    function evaluateBuild() {
+      const cpu = database.cpus.find(i => i.id === selects.cpu.value);
+      const cooler = database.coolers.find(i => i.id === selects.cooler.value);
+      const mb = database.motherboards.find(i => i.id === selects.mb.value);
+      const ram = database.rams.find(i => i.id === selects.ram.value);
+      const gpu = database.gpus.find(i => i.id === selects.gpu.value);
+      const storage = database.storages.find(i => i.id === selects.storage.value);
+      const psu = database.psus.find(i => i.id === selects.psu.value);
+      const curr = getCurrencyInfo();
+
+      let errors = [];
+      let totalTdp = 0;
+      let totalUsd = 0;
+      let chosenParts = [];
+
+      [cpu, cooler, mb, ram, gpu, storage].forEach(part => {
+        if (part) {
+          totalTdp += part.tdp;
+          totalUsd += part.price_usd;
+          if (part.id !== 'none' && part.id !== 'stock_cooler') chosenParts.push(part);
+        }
+      });
+
+      if (psu) { totalUsd += psu.price_usd; chosenParts.push(psu); }
+
+      if (cpu && mb && cpu.socket !== mb.socket) errors.push(`تعارض المقبس: المعالج (${cpu.socket}) لا يركب على اللوحة (${mb.socket}).`);
+      if (mb && ram && mb.ram_type !== ram.type) errors.push(`تعارض الرام: اللوحة تدعم (${mb.ram_type}) والرام المختارة (${ram.type}).`);
+      if (cpu && gpu && gpu.id === 'none' && cpu.igpu_score === 0) errors.push(`المعالج (${cpu.name}) لا يملك كارت شاشة مدمج؛ يجب اختيار كارت منفصل.`);
+      if (cpu && cooler && cpu.tdp > cooler.max_tdp) errors.push(`تحذير حراري: المعالج (${cpu.name}) يحتاج مبرداً احترافياً أعلى قدرة.`);
+
+      const safeMinWatts = totalTdp > 0 ? Math.max(450, Math.ceil((totalTdp + 120) / 50) * 50) : 0;
+      if (psu && totalTdp > 0 && psu.wattage < safeMinWatts) errors.push(`نقص الطاقة: الباور المختار (${psu.wattage}W) أقل من الحد الآمن (${safeMinWatts}W).`);
+
+      const statusCard = document.getElementById('status-card');
+      const statusBadge = document.getElementById('status-badge');
+      const statusDesc = document.getElementById('status-desc');
+
+      if (!cpu || !mb || !ram) {
+        statusCard.className = "p-5 rounded-2xl border bg-white/95 dark:bg-slate-800 border-slate-300/80 dark:border-slate-700 shadow-sm transition";
+        statusBadge.className = "px-2.5 py-1 rounded-md text-xs font-extrabold bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300";
+        statusBadge.textContent = "بانتظار الاختيار";
+        statusDesc.textContent = "حدد المعالج واللوحة الأم والرام لإظهار نتيجة الفحص.";
+      } else if (errors.length > 0) {
+        statusCard.className = "p-5 rounded-2xl border bg-rose-50 dark:bg-rose-950/30 border-rose-300 dark:border-rose-500/50 shadow-sm transition";
+        statusBadge.className = "px-2.5 py-1 rounded-md text-xs font-extrabold bg-rose-600 text-white";
+        statusBadge.textContent = "❌ يوجد تعارض";
+        statusDesc.innerHTML = `<ul class="list-disc list-inside space-y-1 text-rose-800 dark:text-rose-300 font-semibold">${errors.map(e => `<li>${e}</li>`).join('')}</ul>`;
+      } else {
+        statusCard.className = "p-5 rounded-2xl border bg-emerald-50 dark:bg-emerald-950/30 border-emerald-300 dark:border-emerald-500/50 shadow-sm transition";
+        statusBadge.className = "px-2.5 py-1 rounded-md text-xs font-extrabold bg-emerald-600 text-white";
+        statusBadge.textContent = "✅ متوافق وآمن 100%";
+        statusDesc.textContent = "جميع القطع متوافقة تقنياً وحرارياً ومزودة بطاقة كافية.";
+      }
+
+      const perfPlaceholder = document.getElementById('perf-placeholder');
+      const perfResults = document.getElementById('perf-results');
+      const bnBadge = document.getElementById('bottleneck-badge');
+      const bnDesc = document.getElementById('bottleneck-desc');
+      const monitorSection = document.getElementById('monitor-section');
+
+      if (cpu && gpu) {
+        perfPlaceholder.classList.add('hidden');
+        perfResults.classList.remove('hidden');
+        monitorSection.classList.remove('hidden');
+        const effectiveGpuScore = gpu.id === 'none' ? cpu.igpu_score : gpu.score;
+
+        if (gpu.id === 'none') {
+          bnBadge.textContent = "معالج مدمج (iGPU)";
+          bnBadge.className = "text-xs font-extrabold text-sky-600 dark:text-sky-400";
+          bnDesc.textContent = "مناسب للألعاب الخفيفة والعمل المكتبي والدراسة.";
+        } else {
+          const diff = Math.abs(cpu.score - effectiveGpuScore);
+          if (diff <= 15) {
+            bnBadge.textContent = "✅ توازن مثالي (0% عنق زجاجة)";
+            bnBadge.className = "text-xs font-extrabold text-emerald-600 dark:text-emerald-400";
+            bnDesc.textContent = "المعالج وكارت الشاشة متكافئان تماماً.";
+          } else if (cpu.score < effectiveGpuScore) {
+            bnBadge.textContent = `⚠️ عنق زجاجة من المعالج (~${diff}%)`;
+            bnBadge.className = "text-xs font-extrabold text-amber-600 dark:text-amber-400";
+            bnDesc.textContent = "كارت الشاشة أقوى من المعالج؛ يُنصح بمعالج أقوى.";
+          } else {
+            bnBadge.textContent = "ℹ️ المعالج أقوى من الكارت";
+            bnBadge.className = "text-xs font-extrabold text-sky-600 dark:text-sky-400";
+            bnDesc.textContent = "ممتاز للبرمجة والمونتاج وقابل للترقية مستقبلاً.";
+          }
+        }
+
+        const gamingIndex = (effectiveGpuScore * 0.8) + (cpu.score * 0.2);
+        document.getElementById('fps-fc').textContent = `${Math.round(gamingIndex * 1.45)} FPS`;
+        document.getElementById('fps-esports').textContent = `${Math.round(gamingIndex * 2.6)} FPS`;
+        document.getElementById('fps-gta').textContent = `${Math.round(gamingIndex * 1.15)} FPS`;
+        document.getElementById('fps-aaa').textContent = `${Math.round(gamingIndex * 0.72)} FPS`;
+
+        const ramBonus = ram ? (ram.capacity_gb >= 32 ? 15 : (ram.capacity_gb >= 16 ? 6 : 0)) : 0;
+        const editScore = Math.min(100, Math.round((cpu.score * 0.5) + (effectiveGpuScore * 0.35) + ramBonus));
+        const codeScore = Math.min(100, Math.round((cpu.score * 0.75) + ramBonus + 10));
+
+        document.getElementById('bar-editing').style.width = `${editScore}%`;
+        document.getElementById('label-editing').textContent = editScore >= 75 ? 'ممتاز (4K)' : (editScore >= 50 ? 'جيد جداً (1080p)' : 'مقبول');
+        document.getElementById('bar-coding').style.width = `${codeScore}%`;
+        document.getElementById('label-coding').textContent = codeScore >= 80 ? 'احترافي فائق السرعة' : 'ممتاز وسلس';
+
+        const tierKey = effectiveGpuScore >= 90 ? 'ultra' : (effectiveGpuScore >= 72 ? 'mid' : 'entry');
+        const monGroup = monitorCatalog[tierKey];
+        document.getElementById('monitor-res-badge').textContent = monGroup.badge;
+        document.getElementById('monitor-tier-desc').textContent = monGroup.desc;
+
+        const monGrid = document.getElementById('monitor-cards-grid');
+        monGrid.innerHTML = '';
+        monGroup.items.forEach(mon => {
+          const card = document.createElement('div');
+          card.className = "p-3.5 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 flex flex-col justify-between gap-2.5";
+          card.innerHTML = `
+            <div>
+              <span class="text-xs font-extrabold text-slate-900 dark:text-white block">${mon.name}</span>
+              <span class="text-[11px] font-bold text-emerald-700 dark:text-emerald-400">السعر التقريبي: ~${formatLocalPrice(mon.price_usd)}</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <a href="${getAmazonUrl(mon)}" target="_blank" rel="noopener noreferrer" class="flex-1 text-center py-1.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-[11px] transition">
+                Amazon ↗
+              </a>
+              <a href="${mon.ali_url}" target="_blank" rel="noopener noreferrer" class="flex-1 text-center py-1.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-extrabold text-[11px] transition">
+                AliExpress ↗
+              </a>
+            </div>
+          `;
+          monGrid.appendChild(card);
+        });
+      } else {
+        perfPlaceholder.classList.remove('hidden');
+        perfResults.classList.add('hidden');
+        monitorSection.classList.add('hidden');
+        bnBadge.textContent = "---";
+      }
+
+      document.getElementById('total-tdp').textContent = totalTdp;
+      document.getElementById('total-usd').textContent = totalUsd;
+      document.getElementById('total-local').textContent = `~${formatLocalPrice(totalUsd)}`;
+      document.getElementById('usd-equiv-box').classList.toggle('hidden', curr.code === 'USD');
+      document.getElementById('recommended-psu').textContent = totalTdp > 0 ? `${safeMinWatts}W 80+ Bronze` : "---";
+
+      const linksContainer = document.getElementById('links-container');
+      linksContainer.innerHTML = '';
+      if (errors.length === 0 && chosenParts.length > 0) {
+        const title = document.createElement('div');
+        title.className = "text-xs font-extrabold text-slate-700 dark:text-slate-300 pt-2";
+        title.textContent = `🛒 قارن الأسعار واطلب القطع (${chosenParts.length} قطع):`;
+        linksContainer.appendChild(title);
+
+        chosenParts.forEach(part => {
+          const row = document.createElement('div');
+          row.className = "p-3 rounded-xl bg-white/95 dark:bg-slate-800 border border-slate-300/80 dark:border-slate-700 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-2";
+          row.innerHTML = `
+            <div class="min-w-0">
+              <span class="text-xs font-extrabold text-slate-900 dark:text-white block truncate">${part.name}</span>
+              <span class="text-[11px] font-bold text-slate-500 dark:text-slate-400">السعر التقديري: ${formatLocalPrice(part.price_usd)}</span>
+            </div>
+            <div class="flex items-center gap-1.5 shrink-0">
+              <a href="${getAmazonUrl(part)}" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-[11px] transition">
+                Amazon ↗
+              </a>
+              ${part.affiliate_url ? `<a href="${part.affiliate_url}" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-[11px] transition">AliExpress ↗</a>` : ''}
+            </div>
+          `;
+          linksContainer.appendChild(row);
+        });
+      }
+    }
+
+    initApp();
+  </script>
+</body>
+</html>
