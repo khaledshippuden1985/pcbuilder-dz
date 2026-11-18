@@ -232,23 +232,27 @@
             </div>
 
             <div id="perf-results" class="hidden space-y-5">
-              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                <div class="bg-slate-100 dark:bg-slate-900 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 text-center">
-                  <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 block">EA FC 26 / FIFA</span>
-                  <span id="fps-fc" class="text-xl font-black text-emerald-600 dark:text-emerald-400 mt-1 block">-- FPS</span>
+              <!-- Interactive Game Selector (Tag Picker) -->
+              <div class="bg-slate-50 dark:bg-slate-900/60 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700/80 space-y-2">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-extrabold text-slate-800 dark:text-slate-200">🎮 اختر الألعاب لقياس الأداء (حتى 4 ألعاب):</span>
+                    <span id="selected-games-badge" class="text-[11px] font-black px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700/60 transition">4 / 4 محدد</span>
+                  </div>
+                  <span class="text-[11px] text-slate-500 dark:text-slate-400">انقر لتحديد أو إلغاء تحديد اللعبة</span>
                 </div>
-                <div class="bg-slate-100 dark:bg-slate-900 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 text-center">
-                  <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 block">Valorant / CS2</span>
-                  <span id="fps-esports" class="text-xl font-black text-emerald-600 dark:text-emerald-400 mt-1 block">-- FPS</span>
-                </div>
-                <div class="bg-slate-100 dark:bg-slate-900 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 text-center">
-                  <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 block">GTA V (High)</span>
-                  <span id="fps-gta" class="text-xl font-black text-sky-600 dark:text-sky-400 mt-1 block">-- FPS</span>
-                </div>
-                <div class="bg-slate-100 dark:bg-slate-900 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 text-center">
-                  <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 block">Cyberpunk 2077</span>
-                  <span id="fps-aaa" class="text-xl font-black text-amber-600 dark:text-amber-400 mt-1 block">-- FPS</span>
-                </div>
+                <div id="game-picker-tags" class="flex flex-wrap gap-1.5 pt-0.5"></div>
+              </div>
+
+              <!-- Selected Game Cards Grid -->
+              <div id="game-cards-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3"></div>
+
+              <!-- Hidden Spans for Compatibility with Export and Existing Scripts -->
+              <div class="hidden" aria-hidden="true">
+                <span id="fps-fc">-- FPS</span>
+                <span id="fps-esports">-- FPS</span>
+                <span id="fps-gta">-- FPS</span>
+                <span id="fps-aaa">-- FPS</span>
               </div>
 
               <div class="space-y-3 pt-2">
@@ -949,6 +953,198 @@
       }
     };
 
+    const gamesCatalog = [
+      { id: "ea_fc_26", name: "EA FC 26", fpsMultiplier: 1.45, minScore: 45, recommendedGpuId: "rx580_8g" },
+      { id: "valorant", name: "Valorant", fpsMultiplier: 2.80, minScore: 25, recommendedGpuId: "rx580_8g" },
+      { id: "cs2", name: "CS2", fpsMultiplier: 2.00, minScore: 45, recommendedGpuId: "rx580_8g" },
+      { id: "gta_v", name: "GTA V", fpsMultiplier: 1.15, minScore: 35, recommendedGpuId: "rx580_8g" },
+      { id: "cyberpunk_2077", name: "Cyberpunk 2077", fpsMultiplier: 0.72, minScore: 62, recommendedGpuId: "rx6600_8g" },
+      { id: "rdr2", name: "Red Dead Redemption 2", fpsMultiplier: 0.90, minScore: 56, recommendedGpuId: "rx6600_8g" },
+      { id: "warzone", name: "Warzone", fpsMultiplier: 1.05, minScore: 58, recommendedGpuId: "rx6600_8g" },
+      { id: "fortnite", name: "Fortnite", fpsMultiplier: 1.80, minScore: 38, recommendedGpuId: "rx580_8g" },
+      { id: "apex_legends", name: "Apex Legends", fpsMultiplier: 1.40, minScore: 48, recommendedGpuId: "gtx1660_super" },
+      { id: "elden_ring", name: "Elden Ring", fpsMultiplier: 0.95, minScore: 55, recommendedGpuId: "rx6600_8g" },
+      { id: "forza_horizon_5", name: "Forza Horizon 5", fpsMultiplier: 1.15, minScore: 50, recommendedGpuId: "gtx1660_super" },
+      { id: "hogwarts_legacy", name: "Hogwarts Legacy", fpsMultiplier: 0.80, minScore: 60, recommendedGpuId: "rx6600_8g" },
+      { id: "wukong", name: "Black Myth: Wukong", fpsMultiplier: 0.68, minScore: 65, recommendedGpuId: "rx6600_8g" },
+      { id: "starfield", name: "Starfield", fpsMultiplier: 0.70, minScore: 62, recommendedGpuId: "rx6600_8g" },
+      { id: "rust", name: "Rust", fpsMultiplier: 1.10, minScore: 52, recommendedGpuId: "gtx1660_super" },
+      { id: "pubg", name: "PUBG", fpsMultiplier: 1.25, minScore: 50, recommendedGpuId: "gtx1660_super" }
+    ];
+
+    let selectedGameIds = ["ea_fc_26", "valorant", "gta_v", "cyberpunk_2077"];
+
+    function updateGamesBadge() {
+      const badge = document.getElementById('selected-games-badge');
+      if (badge) {
+        badge.textContent = `${selectedGameIds.length} / 4 محدد`;
+        badge.className = "text-[11px] font-black px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700/60 transition";
+      }
+    }
+
+    function flashGameLimitNotice() {
+      const badge = document.getElementById('selected-games-badge');
+      if (!badge) return;
+      badge.textContent = "الحد الأقصى 4 ألعاب!";
+      badge.className = "text-[11px] font-black px-2.5 py-0.5 rounded-full bg-rose-100 dark:bg-rose-950/80 text-rose-700 dark:text-rose-300 border border-rose-300 dark:border-rose-700 animate-pulse";
+      setTimeout(updateGamesBadge, 1800);
+    }
+
+    function renderGameSelector() {
+      const container = document.getElementById('game-picker-tags');
+      if (!container) return;
+      updateGamesBadge();
+
+      container.innerHTML = gamesCatalog.map(game => {
+        const isSelected = selectedGameIds.includes(game.id);
+        const baseClasses = "px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 cursor-pointer select-none";
+        const selectedClasses = "bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm border border-emerald-600";
+        const unselectedClasses = "bg-slate-100 dark:bg-slate-900/80 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700";
+        const icon = isSelected ? '✓' : '+';
+
+        return `
+          <button type="button" onclick="toggleGameSelection('${game.id}')"
+            class="${baseClasses} ${isSelected ? selectedClasses : unselectedClasses}"
+            title="${isSelected ? 'إلغاء التحديد' : 'تحديد اللعبة'}">
+            <span class="text-[10px] ${isSelected ? 'text-white' : 'text-slate-400 dark:text-slate-500'}">${icon}</span>
+            <span>${game.name}</span>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function toggleGameSelection(gameId) {
+      const index = selectedGameIds.indexOf(gameId);
+      if (index > -1) {
+        selectedGameIds.splice(index, 1);
+      } else {
+        if (selectedGameIds.length >= 4) {
+          flashGameLimitNotice();
+          return;
+        }
+        selectedGameIds.push(gameId);
+      }
+      renderGameSelector();
+      evaluateBuild();
+    }
+
+    function renderGameCards(gamingIndex) {
+      const cardsGrid = document.getElementById('game-cards-grid');
+      if (!cardsGrid) return;
+
+      if (selectedGameIds.length === 0) {
+        cardsGrid.innerHTML = `
+          <div class="col-span-full py-6 text-center text-xs font-bold text-slate-500 dark:text-slate-400 bg-slate-100/60 dark:bg-slate-900/40 rounded-xl border border-dashed border-slate-300 dark:border-slate-700">
+            يرجى تحديد لعبة واحدة على الأقل من القائمة أعلاه لعرض الأداء ومعدل الإطارات.
+          </div>
+        `;
+        return;
+      }
+
+      cardsGrid.innerHTML = selectedGameIds.map(gameId => {
+        const game = gamesCatalog.find(g => g.id === gameId);
+        if (!game) return '';
+        const fps = Math.round(gamingIndex * game.fpsMultiplier);
+        const isUnderperforming = gamingIndex < game.minScore;
+
+        let fpsColor = "text-emerald-600 dark:text-emerald-400";
+        if (fps >= 100) fpsColor = "text-emerald-600 dark:text-emerald-400";
+        else if (fps >= 60) fpsColor = "text-sky-600 dark:text-sky-400";
+        else if (fps >= 45) fpsColor = "text-amber-600 dark:text-amber-400";
+        else fpsColor = "text-rose-600 dark:text-rose-400";
+
+        if (isUnderperforming) {
+          return `
+            <div class="bg-rose-50/80 dark:bg-rose-950/30 p-3.5 rounded-xl border border-rose-300 dark:border-rose-700/60 text-center flex flex-col justify-between transition-all min-h-[110px]">
+              <div>
+                <span class="text-xs font-bold text-slate-700 dark:text-slate-300 block mb-1">${game.name}</span>
+                <span class="text-xl font-black text-rose-600 dark:text-rose-400 block">${fps} FPS</span>
+                <span class="text-[11px] font-extrabold text-rose-600 dark:text-rose-400 leading-tight block mt-1.5">
+                  ⚠️ التجميعة غير كافية لتشغيل اللعبة بسلاسة
+                </span>
+              </div>
+              <button type="button" onclick="upgradeBuildForGame('${game.id}')"
+                class="w-full mt-2.5 py-1.5 px-2 text-xs font-bold rounded-lg bg-rose-600 hover:bg-rose-700 active:scale-95 text-white shadow-sm transition flex items-center justify-center gap-1 cursor-pointer">
+                اقترح ترقية لتشغيلها ⬆️
+              </button>
+            </div>
+          `;
+        } else {
+          return `
+            <div class="bg-slate-100 dark:bg-slate-900 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 text-center flex flex-col justify-between transition-all min-h-[110px]">
+              <div>
+                <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 block">${game.name}</span>
+                <span class="text-xl font-black ${fpsColor} mt-1 block">${fps} FPS</span>
+              </div>
+              <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 mt-2 block">1080p سلس ومستقر</span>
+            </div>
+          `;
+        }
+      }).join('');
+    }
+
+    function upgradeBuildForGame(gameId) {
+      const game = gamesCatalog.find(g => g.id === gameId);
+      if (!game) return;
+
+      const cpu = database.cpus.find(i => i.id === selects.cpu.value);
+      const currentGpu = database.gpus.find(i => i.id === selects.gpu.value);
+      const cpuScore = cpu ? cpu.score : 70;
+      const currentGpuScore = currentGpu && currentGpu.id !== 'none' ? currentGpu.score : (cpu ? cpu.igpu_score : 0);
+
+      // Candidate GPUs from database that meet or exceed minScore with current CPU
+      const capableGpus = database.gpus
+        .filter(g => g.id !== 'none' && g.score > currentGpuScore && ((g.score * 0.8) + (cpuScore * 0.2)) >= game.minScore)
+        .sort((a, b) => a.price_usd - b.price_usd || a.score - b.score);
+
+      const recGpu = database.gpus.find(g => g.id === game.recommendedGpuId);
+      let targetGpu = null;
+
+      if (recGpu && recGpu.score > currentGpuScore && ((recGpu.score * 0.8) + (cpuScore * 0.2)) >= game.minScore) {
+        targetGpu = recGpu;
+      } else if (capableGpus.length > 0) {
+        targetGpu = capableGpus[0];
+      } else {
+        targetGpu = database.gpus
+          .filter(g => g.id !== 'none' && ((g.score * 0.8) + (cpuScore * 0.2)) >= game.minScore)
+          .sort((a, b) => a.price_usd - b.price_usd || a.score - b.score)[0] || recGpu;
+      }
+
+      if (!targetGpu) return;
+
+      selects.gpu.value = targetGpu.id;
+
+      // Adjust PSU if needed
+      const cooler = database.coolers.find(i => i.id === selects.cooler.value);
+      const mb = database.motherboards.find(i => i.id === selects.mb.value);
+      const ram = database.rams.find(i => i.id === selects.ram.value);
+      const storage = database.storages.find(i => i.id === selects.storage.value);
+      const currentPsu = database.psus.find(i => i.id === selects.psu.value);
+
+      const estTdp = (cpu ? cpu.tdp : 65) +
+                     (cooler ? cooler.tdp : 2) +
+                     (mb ? mb.tdp : 25) +
+                     (ram ? ram.tdp : 10) +
+                     (storage ? storage.tdp : 5) +
+                     targetGpu.tdp;
+
+      const safeMinWatts = estTdp > 0 ? Math.max(450, Math.ceil((estTdp + 120) / 50) * 50) : 450;
+
+      if (!currentPsu || currentPsu.wattage < safeMinWatts) {
+        const compatiblePsus = database.psus
+          .filter(p => p.wattage >= safeMinWatts)
+          .sort((a, b) => a.wattage - b.wattage || a.price_usd - b.price_usd);
+
+        if (compatiblePsus.length > 0) {
+          selects.psu.value = compatiblePsus[0].id;
+        }
+      }
+
+      evaluateBuild();
+    }
+
+    renderGameSelector();
+
     function getCurrencyInfo() {
       const sel = document.getElementById('currency-select');
       const opt = sel.options[sel.selectedIndex];
@@ -1600,10 +1796,19 @@
         }
 
         const gamingIndex = (effectiveGpuScore * 0.8) + (cpu.score * 0.2);
-        document.getElementById('fps-fc').textContent = `${Math.round(gamingIndex * 1.45)} FPS`;
-        document.getElementById('fps-esports').textContent = `${Math.round(gamingIndex * 2.6)} FPS`;
-        document.getElementById('fps-gta').textContent = `${Math.round(gamingIndex * 1.15)} FPS`;
-        document.getElementById('fps-aaa').textContent = `${Math.round(gamingIndex * 0.72)} FPS`;
+
+        // Update fallback spans for export & compatibility
+        const fcEl = document.getElementById('fps-fc');
+        if (fcEl) fcEl.textContent = `${Math.round(gamingIndex * 1.45)} FPS`;
+        const esportsEl = document.getElementById('fps-esports');
+        if (esportsEl) esportsEl.textContent = `${Math.round(gamingIndex * 2.6)} FPS`;
+        const gtaEl = document.getElementById('fps-gta');
+        if (gtaEl) gtaEl.textContent = `${Math.round(gamingIndex * 1.15)} FPS`;
+        const aaaEl = document.getElementById('fps-aaa');
+        if (aaaEl) aaaEl.textContent = `${Math.round(gamingIndex * 0.72)} FPS`;
+
+        // Render dynamic game cards
+        renderGameCards(gamingIndex);
 
         const ramBonus = ram ? (ram.capacity_gb >= 32 ? 15 : (ram.capacity_gb >= 16 ? 6 : 0)) : 0;
         const editScore = Math.min(100, Math.round((cpu.score * 0.5) + (effectiveGpuScore * 0.35) + ramBonus));
