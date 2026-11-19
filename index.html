@@ -60,8 +60,14 @@
           </p>
         </div>
 
-        <!-- Currency & Theme Controls -->
+        <!-- Currency & Theme Controls & Telegram Pill -->
         <div class="flex flex-wrap items-center gap-3 bg-slate-950/60 backdrop-blur-md p-3 rounded-2xl border border-slate-700/80">
+          <a href="https://t.me/pcbuilder_ar" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-sky-500/20 hover:bg-sky-500/30 border border-sky-400/40 text-sky-300 hover:text-white text-xs font-extrabold transition shadow-xs">
+            <svg class="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+            <span>قناة التيليجرام 📢</span>
+          </a>
+
           <div class="flex items-center gap-2">
             <label for="currency-select" class="text-xs font-bold text-slate-300">العملة:</label>
             <select id="currency-select" class="bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-extrabold text-emerald-400 focus:outline-none">
@@ -343,8 +349,101 @@
             </div>
           </div>
 
+          <!-- Smart Coupons & Deals Box (Smart Saver) -->
+          <div id="smart-coupons-card" class="p-5 rounded-2xl border border-amber-300/80 dark:border-amber-500/30 bg-gradient-to-br from-amber-50/70 via-white/95 to-slate-50 dark:from-amber-950/20 dark:via-slate-800 dark:to-slate-800 shadow-sm space-y-3.5">
+            <div class="flex items-center justify-between gap-2">
+              <div class="flex items-center gap-2">
+                <span class="text-xl">🎟️</span>
+                <h3 class="text-xs sm:text-sm font-black text-slate-900 dark:text-white">
+                  كوبونات وتخفيضات إضافية (تحديث نوفمبر 2026)
+                </h3>
+              </div>
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-amber-400 text-slate-950 shadow-xs">
+                AliExpress
+              </span>
+            </div>
+
+            <!-- Dynamic coupon content filled by updateSmartCoupons() -->
+            <div id="smart-coupon-body" class="space-y-2.5"></div>
+
+            <div class="pt-2 border-t border-slate-200/80 dark:border-slate-700/80">
+              <p class="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed">
+                💡 <strong>نصيحة:</strong> تحقق أيضاً من <a href="https://www.aliexpress.com/p/coupon-center/index.html" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-400 font-extrabold hover:underline">مركز كوبونات AliExpress</a> أو خصم البطاقات البنكية في Amazon قبل الدفع.
+              </p>
+            </div>
+          </div>
+
           <!-- Multi-Store Affiliate Links -->
           <div id="links-container" class="space-y-2.5"></div>
+
+          <!-- Software & Game Keys Affiliate Strip -->
+          <div id="software-keys-container" class="hidden p-5 rounded-2xl border border-slate-300/80 dark:border-slate-700 bg-white/95 dark:bg-slate-800 shadow-sm space-y-3">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="text-lg">🔑</span>
+                <h3 class="text-xs sm:text-sm font-black text-slate-900 dark:text-white">
+                  أكواد أصلية مخفضة لتجميعتك
+                </h3>
+              </div>
+              <span class="text-[10px] font-black px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 border border-emerald-300/40 dark:border-emerald-500/30">
+                عروض شركاء
+              </span>
+            </div>
+
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
+              وفّر في إعداد جهازك الجديد مع أكواد وتراخيص رقمية مخفضة وموثوقة:
+            </p>
+
+            <div class="grid grid-cols-1 gap-2 pt-1">
+              <a href="https://www.cdkeys.com/software/windows-11-pro-oem-key" target="_blank" rel="noopener noreferrer"
+                 class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 dark:bg-slate-900/70 dark:hover:bg-slate-900 border border-slate-200 dark:border-slate-700 transition group">
+                <div class="flex items-center gap-2.5 min-w-0">
+                  <span class="text-base shrink-0">🪟</span>
+                  <div class="min-w-0">
+                    <span class="text-xs font-extrabold text-slate-800 dark:text-slate-200 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 block truncate transition">
+                      تفعيل Windows 11 Pro الأصلي (~$12)
+                    </span>
+                    <span class="text-[10px] text-slate-500 dark:text-slate-400 block truncate">
+                      مفتاح OEM أصلي دائم مع تفعيل رسمي فوري
+                    </span>
+                  </div>
+                </div>
+                <span class="text-xs font-black text-slate-400 group-hover:text-emerald-500 shrink-0 mr-2 transition">↗</span>
+              </a>
+
+              <a href="https://www.exitlag.com/" target="_blank" rel="noopener noreferrer"
+                 class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 dark:bg-slate-900/70 dark:hover:bg-slate-900 border border-slate-200 dark:border-slate-700 transition group">
+                <div class="flex items-center gap-2.5 min-w-0">
+                  <span class="text-base shrink-0">⚡</span>
+                  <div class="min-w-0">
+                    <span class="text-xs font-extrabold text-slate-800 dark:text-slate-200 group-hover:text-sky-600 dark:group-hover:text-sky-400 block truncate transition">
+                      تخفيض البنق للألعاب (ExitLag)
+                    </span>
+                    <span class="text-[10px] text-slate-500 dark:text-slate-400 block truncate">
+                      تحسين مسارات السيرفرات وتثبيت الـ Ping وتجنب الـ Packet Loss
+                    </span>
+                  </div>
+                </div>
+                <span class="text-xs font-black text-slate-400 group-hover:text-sky-500 shrink-0 mr-2 transition">↗</span>
+              </a>
+
+              <a href="https://www.cdkeys.com/" target="_blank" rel="noopener noreferrer"
+                 class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 dark:bg-slate-900/70 dark:hover:bg-slate-900 border border-slate-200 dark:border-slate-700 transition group">
+                <div class="flex items-center gap-2.5 min-w-0">
+                  <span class="text-base shrink-0">🎮</span>
+                  <div class="min-w-0">
+                    <span class="text-xs font-extrabold text-slate-800 dark:text-slate-200 group-hover:text-amber-600 dark:group-hover:text-amber-400 block truncate transition">
+                      ألعاب مخفضة و EA FC 26 (CDKeys / G2A)
+                    </span>
+                    <span class="text-[10px] text-slate-500 dark:text-slate-400 block truncate">
+                      أكواد ألعاب Steam و EA Sports بخصومات حقيقية تصل 70%
+                    </span>
+                  </div>
+                </div>
+                <span class="text-xs font-black text-slate-400 group-hover:text-amber-500 shrink-0 mr-2 transition">↗</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -820,6 +919,56 @@
       </div>
     </div>
 
+    <!-- ========================================================= -->
+    <!-- FOOTER AREA & TELEGRAM CHANNEL BANNER                     -->
+    <!-- ========================================================= -->
+    <footer class="mt-12 space-y-6">
+      <!-- Telegram Channel Banner -->
+      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-sky-950 via-slate-900 to-indigo-950 text-white p-6 sm:p-8 border border-sky-500/30 shadow-lg">
+        <div class="absolute -right-12 -top-12 w-48 h-48 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -left-12 -bottom-12 w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="flex items-start gap-4">
+            <div class="w-14 h-14 rounded-2xl bg-sky-500/20 border border-sky-400/40 flex items-center justify-center shrink-0 text-sky-400 shadow-inner">
+              <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+            </div>
+            <div class="space-y-1.5 text-right">
+              <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sky-500/20 text-sky-300 text-[11px] font-extrabold border border-sky-400/30">
+                <span>⚡ انضم لمجتمعنا على تيليجرام</span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-black text-white">
+                قناة التليجرام الرسمية لصفقات الحواسيب والكوبونات
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 max-w-xl leading-relaxed">
+                انضم لقناتنا للحصول على عروض يومية فلاش، أحدث بروموكودات وكوبونات التخفيض المتجددة لـ AliExpress و Amazon، استشارات تجميع ومجتمع نقاش تفاعلي.
+              </p>
+            </div>
+          </div>
+
+          <div class="shrink-0 w-full md:w-auto text-center">
+            <a href="https://t.me/pcbuilder_ar" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center gap-2.5 w-full md:w-auto px-6 py-3.5 rounded-2xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-black text-sm transition shadow-lg shadow-sky-500/25 cursor-pointer transform hover:-translate-y-0.5">
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+              <span>انضم الآن إلى t.me/pcbuilder_ar ↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Credits -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500 dark:text-slate-400 pt-2 pb-6 border-t border-slate-300/60 dark:border-slate-800">
+        <div>
+          <span>© 2026 مُجمّع الحواسيب الذكي (PC Builder) • جميع الأسعار والكوبونات محدثة دورياً</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="https://t.me/pcbuilder_ar" target="_blank" rel="noopener noreferrer" class="hover:text-sky-500 transition font-bold">مجتمع التيليجرام</a>
+          <span>•</span>
+          <a href="https://www.aliexpress.com/p/coupon-center/index.html" target="_blank" rel="noopener noreferrer" class="hover:text-amber-500 transition font-bold">مركز كوبونات AliExpress</a>
+        </div>
+      </div>
+    </footer>
+
   </div>
 
   <!-- HIDDEN PRINTABLE PNG CARD TEMPLATE -->
@@ -904,6 +1053,19 @@
   </div>
 
   <script>
+    // =========================================================
+    // SMART SAVER: TIERED ALIEXPRESS PROMO CODES (NOVEMBER 2026)
+    // Easily editable list for seasonal sales (Algeria, GCC & Global)
+    // =========================================================
+    const ALIEXPRESS_COUPONS = [
+      { minUsd: 29, discountUsd: 3, code: "BFAR03" },
+      { minUsd: 69, discountUsd: 8, code: "BFAR08" },
+      { minUsd: 169, discountUsd: 20, code: "BFAR20" },
+      { minUsd: 239, discountUsd: 30, code: "BFAR30" },
+      { minUsd: 369, discountUsd: 50, code: "BFAR50" },
+      { minUsd: 499, discountUsd: 70, code: "BFAR70" }
+    ];
+
     let database = { cpus: [], motherboards: [], rams: [], gpus: [], storages: [], coolers: [], psus: [] };
     let vsCategory = 'cpus';
 
@@ -1858,6 +2020,8 @@
       document.getElementById('usd-equiv-box').classList.toggle('hidden', curr.code === 'USD');
       document.getElementById('recommended-psu').textContent = totalTdp > 0 ? `${safeMinWatts}W 80+ Bronze` : "---";
 
+      updateSmartCoupons(totalUsd);
+
       const linksContainer = document.getElementById('links-container');
       linksContainer.innerHTML = '';
       if (errors.length === 0 && chosenParts.length > 0) {
@@ -1884,7 +2048,126 @@
           linksContainer.appendChild(row);
         });
       }
+
+      const isValidBuild = errors.length === 0 && chosenParts.length > 0;
+      const softwareKeysBox = document.getElementById('software-keys-container');
+      if (softwareKeysBox) {
+        softwareKeysBox.classList.toggle('hidden', !isValidBuild);
+      }
     }
+
+    // =========================================================
+    // SMART SAVER: DYNAMIC COUPON CALCULATION & DISPLAY
+    // =========================================================
+    function updateSmartCoupons(totalUsd) {
+      const body = document.getElementById('smart-coupon-body');
+      if (!body) return;
+
+      const eligible = ALIEXPRESS_COUPONS.filter(c => totalUsd >= c.minUsd);
+
+      if (eligible.length > 0) {
+        const best = eligible.reduce((max, c) => (c.discountUsd > max.discountUsd ? c : max), eligible[0]);
+        const netUsd = Math.max(0, totalUsd - best.discountUsd);
+
+        const nextTiers = ALIEXPRESS_COUPONS.filter(c => c.minUsd > totalUsd).sort((a, b) => a.minUsd - b.minUsd);
+        const nextTier = nextTiers.length > 0 ? nextTiers[0] : null;
+
+        body.innerHTML = `
+          <div class="p-3.5 rounded-xl bg-amber-500/10 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-500/40 space-y-2.5">
+            <div class="flex items-center justify-between gap-2 flex-wrap">
+              <div>
+                <span class="text-[11px] font-extrabold text-amber-900 dark:text-amber-300 block">أعلى كود خصم مؤهل لتجميعتك:</span>
+                <div class="flex items-center gap-2 mt-1">
+                  <span class="font-mono text-sm sm:text-base font-black px-2.5 py-0.5 rounded-lg bg-amber-400 text-slate-950 tracking-wider shadow-xs select-all">${best.code}</span>
+                  <span class="text-xs font-black text-emerald-700 dark:text-emerald-400">وفر ~${formatLocalPrice(best.discountUsd)} (-$${best.discountUsd})</span>
+                </div>
+              </div>
+              <button type="button" onclick="copyCouponCode('${best.code}', this)" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-slate-700 dark:hover:bg-slate-600 text-white font-black text-xs transition cursor-pointer shadow-xs">
+                <span>📋 نسخ الكود</span>
+              </button>
+            </div>
+
+            <div class="pt-2 border-t border-amber-200/80 dark:border-amber-800/60 flex items-center justify-between text-xs">
+              <span class="font-bold text-slate-600 dark:text-slate-300">السعر الصافي بعد الخصم:</span>
+              <div class="text-left">
+                <span class="text-base font-black text-emerald-700 dark:text-emerald-400">~${formatLocalPrice(netUsd)}</span>
+                <span class="text-[10px] text-slate-500 dark:text-slate-400 block font-semibold">(بدل ~${formatLocalPrice(totalUsd)})</span>
+              </div>
+            </div>
+
+            ${nextTier ? `
+              <div class="text-[11px] bg-white/80 dark:bg-slate-900/60 p-2 rounded-lg border border-amber-200/80 dark:border-amber-900/40 text-amber-900 dark:text-amber-200 flex items-center justify-between gap-2">
+                <span>🚀 المستوى التالي: وفر <strong>$${nextTier.discountUsd}</strong> بكود <strong>${nextTier.code}</strong></span>
+                <span class="font-black text-emerald-700 dark:text-emerald-400">أضف +~${formatLocalPrice(nextTier.minUsd - totalUsd)}</span>
+              </div>
+            ` : ''}
+          </div>
+        `;
+      } else {
+        const firstTier = ALIEXPRESS_COUPONS[0];
+        const diff = Math.max(0, firstTier.minUsd - totalUsd);
+
+        body.innerHTML = `
+          <div class="p-3.5 rounded-xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700 space-y-2">
+            <div class="flex items-center justify-between gap-2 flex-wrap">
+              <div>
+                <span class="text-[11px] font-extrabold text-slate-600 dark:text-slate-400 block">أقرب كود تخفيض (للطلبيات من $${firstTier.minUsd} فما فوق):</span>
+                <div class="flex items-center gap-2 mt-1">
+                  <span class="font-mono text-xs sm:text-sm font-black px-2.5 py-0.5 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-900 dark:text-white tracking-wider select-all">${firstTier.code}</span>
+                  <span class="text-xs font-bold text-slate-600 dark:text-slate-400">خصم ~${formatLocalPrice(firstTier.discountUsd)} (-$${firstTier.discountUsd})</span>
+                </div>
+              </div>
+              <button type="button" onclick="copyCouponCode('${firstTier.code}', this)" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 dark:bg-slate-700 dark:hover:bg-slate-600 text-white font-black text-xs transition cursor-pointer shadow-xs">
+                <span>📋 نسخ الكود</span>
+              </button>
+            </div>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
+              ${totalUsd > 0
+                ? `متبقي إضافة قطع بقيمة <strong>~${formatLocalPrice(diff)}</strong> لتفعيل هذا الخصم تلقائياً.`
+                : `اختر قطع تجميعتك من القائمة وسيتم احتساب وتفعيل أعلى كوبون مؤهل لمجموع طلبك تلقائياً.`}
+            </p>
+          </div>
+        `;
+      }
+    }
+
+    function copyCouponCode(code, btn) {
+      const showSuccess = () => {
+        if (!btn) return;
+        const origHtml = btn.innerHTML;
+        btn.innerHTML = `<span>تم النسخ! ✓</span>`;
+        btn.classList.add('bg-emerald-600', 'text-white');
+        setTimeout(() => {
+          btn.innerHTML = origHtml;
+          btn.classList.remove('bg-emerald-600', 'text-white');
+        }, 2000);
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(code).then(showSuccess).catch(() => {
+          fallbackCopyText(code);
+          showSuccess();
+        });
+      } else {
+        fallbackCopyText(code);
+        showSuccess();
+      }
+    }
+
+    function fallbackCopyText(text) {
+      const el = document.createElement('textarea');
+      el.value = text;
+      el.style.position = 'fixed';
+      el.style.left = '-9999px';
+      document.body.appendChild(el);
+      el.select();
+      try { document.execCommand('copy'); } catch(e) {}
+      document.body.removeChild(el);
+    }
+
+    window.copyCouponCode = copyCouponCode;
+
+    updateSmartCoupons(0);
 
     initApp();
   </script>
