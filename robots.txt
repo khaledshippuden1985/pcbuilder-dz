@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /parts.json
 
-Sitemap: https://pcbuilder-ar.netlify.app/sitemap.xml
+Sitemap: https://pcbuilder-ar.pages.dev/sitemap.xml
