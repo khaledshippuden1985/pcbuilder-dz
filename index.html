@@ -44,13 +44,23 @@
       }
     }
   </script>
+  <style>
+    /* Hide scrollbar for Chrome, Safari, Opera & modern browsers */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
 </head>
-<body class="bg-slate-200/80 dark:bg-slate-900 text-slate-800 dark:text-slate-100 min-h-screen py-6 px-4 transition-colors duration-200">
+<body class="bg-slate-200/80 dark:bg-slate-900 text-slate-800 dark:text-slate-100 min-h-screen pt-4 sm:pt-6 px-3 sm:px-4 pb-20 md:pb-6 transition-colors duration-200">
 
   <div class="max-w-6xl mx-auto">
 
     <!-- HERO BANNER HEADER -->
-    <header class="relative overflow-hidden rounded-3xl bg-gradient-to-l from-slate-900 via-slate-800 to-emerald-950 text-white p-6 md:p-8 mb-6 shadow-md border border-slate-700/60">
+    <header class="relative overflow-hidden rounded-3xl bg-gradient-to-l from-slate-900 via-slate-800 to-emerald-950 text-white p-4 sm:p-6 md:p-8 mb-6 shadow-md border border-slate-700/60">
       <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#10b981 1px, transparent 1px); background-size: 20px 20px;"></div>
       
       <div class="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
@@ -100,28 +110,28 @@
     </div>
 
     <!-- Sticky Navigation Mode Switcher Tabs -->
-    <nav class="sticky top-3 z-40 flex flex-wrap gap-2 mb-6 bg-slate-100/95 dark:bg-slate-800/95 backdrop-blur-md p-2 rounded-2xl border border-slate-300/80 dark:border-slate-700 shadow-md w-fit">
-      <button id="tab-btn-builder" class="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer bg-emerald-600 text-white shadow-sm">
+    <nav class="sticky top-3 z-40 flex flex-nowrap overflow-x-auto no-scrollbar gap-2 mb-6 bg-slate-100/95 dark:bg-slate-800/95 backdrop-blur-md p-2 rounded-2xl border border-slate-300/80 dark:border-slate-700 shadow-md w-full md:w-fit md:flex-wrap">
+      <button id="tab-btn-builder" class="shrink-0 whitespace-nowrap px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer bg-emerald-600 text-white shadow-sm">
         🛠️ المجمّع الذكي والشاشات
       </button>
-      <button id="tab-btn-vs" class="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white">
+      <button id="tab-btn-vs" class="shrink-0 whitespace-nowrap px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white">
         ⚔️ مقارنة قطعتين (VS)
       </button>
-      <button id="tab-btn-upgrade" class="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white">
+      <button id="tab-btn-upgrade" class="shrink-0 whitespace-nowrap px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white">
         🚀 استشاري الترقيات
       </button>
-      <button id="tab-btn-presets" class="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white">
+      <button id="tab-btn-presets" class="shrink-0 whitespace-nowrap px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white">
         ⚡ تجميعات جاهزة
       </button>
-      <button id="tab-btn-prebuilt" class="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white">
+      <button id="tab-btn-prebuilt" class="shrink-0 whitespace-nowrap px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white">
         💻 حواسيب ولابتوبات جاهزة
       </button>
-      <span class="hidden sm:inline-block w-px h-6 bg-slate-300 dark:bg-slate-700 self-center mx-1"></span>
-      <a href="blog.html" class="px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer text-emerald-700 dark:text-emerald-400 hover:bg-emerald-500/10 border border-emerald-500/30 inline-flex items-center gap-1.5">
+      <span class="hidden sm:inline-block w-px h-6 bg-slate-300 dark:bg-slate-700 self-center mx-1 shrink-0"></span>
+      <a href="blog.html" class="shrink-0 whitespace-nowrap px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer text-emerald-700 dark:text-emerald-400 hover:bg-emerald-500/10 border border-emerald-500/30 inline-flex items-center gap-1.5">
         <span>📚</span>
         <span>المدونة والدليل</span>
       </a>
-      <a href="legal.html" class="px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white inline-flex items-center gap-1.5">
+      <a href="legal.html" class="shrink-0 whitespace-nowrap px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white inline-flex items-center gap-1.5">
         <span>⚖️</span>
         <span>الخصوصية والشروط</span>
       </a>
@@ -133,7 +143,7 @@
     <div id="view-builder">
 
       <!-- Smart Auto-Builder by Budget Section -->
-      <section class="bg-white/95 dark:bg-slate-800 p-6 rounded-2xl border border-slate-300/80 dark:border-emerald-500/30 mb-8 shadow-sm">
+      <section class="bg-white/95 dark:bg-slate-800 p-4 sm:p-6 rounded-2xl border border-slate-300/80 dark:border-emerald-500/30 mb-6 lg:mb-8 shadow-sm">
         <div class="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-4">
           <div class="space-y-1">
             <h2 class="text-lg font-extrabold text-emerald-700 dark:text-emerald-400 flex items-center gap-2">
@@ -171,10 +181,10 @@
         <div id="auto-build-msg" class="hidden mt-3 text-xs font-bold px-3.5 py-2.5 rounded-xl"></div>
       </section>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8">
         <!-- Left Column -->
         <div class="lg:col-span-7 space-y-6">
-          <div class="bg-white/95 dark:bg-slate-800 p-6 rounded-2xl border border-slate-300/80 dark:border-slate-700 shadow-sm space-y-5">
+          <div class="bg-white/95 dark:bg-slate-800 p-4 sm:p-6 rounded-2xl border border-slate-300/80 dark:border-slate-700 shadow-sm space-y-5">
             <div class="flex flex-wrap items-center justify-between gap-2">
               <h2 class="text-lg font-extrabold text-slate-900 dark:text-white">1. مكونات الجهاز (7 قطع)</h2>
               <div class="flex items-center gap-2">
@@ -247,7 +257,7 @@
           </div>
 
           <!-- Performance & Games Estimator -->
-          <div class="bg-white/95 dark:bg-slate-800 p-6 rounded-2xl border border-slate-300/80 dark:border-slate-700 shadow-sm space-y-5">
+          <div class="bg-white/95 dark:bg-slate-800 p-4 sm:p-6 rounded-2xl border border-slate-300/80 dark:border-slate-700 shadow-sm space-y-5">
             <h2 class="text-lg font-extrabold text-slate-900 dark:text-white">2. تقدير الأداء في الألعاب والبرامج</h2>
             
             <div id="perf-placeholder" class="text-sm text-slate-500 dark:text-slate-400 py-4 text-center">
@@ -303,7 +313,7 @@
           </div>
 
           <!-- SMART MONITOR RECOMMENDATIONS SECTION -->
-          <div id="monitor-section" class="hidden bg-white/95 dark:bg-slate-800 p-6 rounded-2xl border border-sky-300 dark:border-sky-500/30 shadow-sm space-y-4">
+          <div id="monitor-section" class="hidden bg-white/95 dark:bg-slate-800 p-4 sm:p-6 rounded-2xl border border-sky-300 dark:border-sky-500/30 shadow-sm space-y-4">
             <div class="flex items-center justify-between">
               <div>
                 <h2 class="text-lg font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
@@ -322,7 +332,7 @@
 
         <!-- Right Column -->
         <div class="lg:col-span-5 space-y-5">
-          <div id="status-card" class="p-5 rounded-2xl border bg-white/95 dark:bg-slate-800 border-slate-300/80 dark:border-slate-700 shadow-sm transition">
+          <div id="status-card" class="p-4 sm:p-5 rounded-2xl border bg-white/95 dark:bg-slate-800 border-slate-300/80 dark:border-slate-700 shadow-sm transition scroll-mt-20">
             <div class="flex items-center justify-between mb-2">
               <span class="text-xs font-extrabold text-slate-600 dark:text-slate-300">حالة التوافق التقني والحراري</span>
               <span id="status-badge" class="px-2.5 py-1 rounded-md text-xs font-extrabold bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">بانتظار الاختيار</span>
@@ -332,7 +342,7 @@
             </p>
           </div>
 
-          <div class="p-5 rounded-2xl border border-slate-300/80 dark:border-slate-700 bg-white/95 dark:bg-slate-800 shadow-sm space-y-2">
+          <div class="p-4 sm:p-5 rounded-2xl border border-slate-300/80 dark:border-slate-700 bg-white/95 dark:bg-slate-800 shadow-sm space-y-2">
             <div class="flex items-center justify-between">
               <span class="text-xs font-extrabold text-slate-600 dark:text-slate-300">فحص عنق الزجاجة (Bottleneck)</span>
               <span id="bottleneck-badge" class="text-xs font-extrabold text-slate-500">---</span>
@@ -342,7 +352,7 @@
             </p>
           </div>
 
-          <div class="p-5 rounded-2xl border border-slate-300/80 dark:border-slate-700 bg-white/95 dark:bg-slate-800 shadow-sm space-y-4">
+          <div class="p-4 sm:p-5 rounded-2xl border border-slate-300/80 dark:border-slate-700 bg-white/95 dark:bg-slate-800 shadow-sm space-y-4">
             <div class="flex justify-between items-center">
               <div>
                 <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 block">الاستهلاك الفعلي للطاقة</span>
@@ -367,7 +377,7 @@
           </div>
 
           <!-- Smart Coupons & Deals Box (Smart Saver) -->
-          <div id="smart-coupons-card" class="p-5 rounded-2xl border border-amber-300/80 dark:border-amber-500/30 bg-gradient-to-br from-amber-50/70 via-white/95 to-slate-50 dark:from-amber-950/20 dark:via-slate-800 dark:to-slate-800 shadow-sm space-y-3.5">
+          <div id="smart-coupons-card" class="p-4 sm:p-5 rounded-2xl border border-amber-300/80 dark:border-amber-500/30 bg-gradient-to-br from-amber-50/70 via-white/95 to-slate-50 dark:from-amber-950/20 dark:via-slate-800 dark:to-slate-800 shadow-sm space-y-3.5">
             <div class="flex items-center justify-between gap-2">
               <div class="flex items-center gap-2">
                 <span class="text-xl">🎟️</span>
@@ -394,7 +404,7 @@
           <div id="links-container" class="space-y-2.5"></div>
 
           <!-- Software & Game Keys Affiliate Strip -->
-          <div id="software-keys-container" class="hidden p-5 rounded-2xl border border-slate-300/80 dark:border-slate-700 bg-white/95 dark:bg-slate-800 shadow-sm space-y-3">
+          <div id="software-keys-container" class="hidden p-4 sm:p-5 rounded-2xl border border-slate-300/80 dark:border-slate-700 bg-white/95 dark:bg-slate-800 shadow-sm space-y-3">
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-2">
                 <span class="text-lg">🔑</span>
@@ -412,7 +422,7 @@
             </p>
 
             <div class="grid grid-cols-1 gap-2 pt-1">
-              <a href="https://www.cdkeys.com/software/windows-11-pro-oem-key" target="_blank" rel="noopener noreferrer"
+              <a href="https://www.cdkeys.com/?q=windows+11+pro" target="_blank" rel="noopener noreferrer"
                  class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 dark:bg-slate-900/70 dark:hover:bg-slate-900 border border-slate-200 dark:border-slate-700 transition group">
                 <div class="flex items-center gap-2.5 min-w-0">
                   <span class="text-base shrink-0">🪟</span>
@@ -444,7 +454,7 @@
                 <span class="text-xs font-black text-slate-400 group-hover:text-sky-500 shrink-0 mr-2 transition">↗</span>
               </a>
 
-              <a href="https://www.cdkeys.com/" target="_blank" rel="noopener noreferrer"
+              <a href="https://www.cdkeys.com/?q=ea+sports+fc+26" target="_blank" rel="noopener noreferrer"
                  class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 dark:bg-slate-900/70 dark:hover:bg-slate-900 border border-slate-200 dark:border-slate-700 transition group">
                 <div class="flex items-center gap-2.5 min-w-0">
                   <span class="text-base shrink-0">🎮</span>
@@ -469,7 +479,7 @@
     <!-- VIEW 2: HEAD-TO-HEAD HARDWARE COMPARATOR (VS MODE)        -->
     <!-- ========================================================= -->
     <div id="view-vs" class="hidden space-y-6">
-      <div class="bg-white/95 dark:bg-slate-800 p-6 rounded-2xl border border-slate-300/80 dark:border-slate-700 shadow-sm">
+      <div class="bg-white/95 dark:bg-slate-800 p-4 sm:p-6 rounded-2xl border border-slate-300/80 dark:border-slate-700 shadow-sm">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200 dark:border-slate-700">
           <div>
             <h2 class="text-xl font-black text-slate-900 dark:text-white">⚔️ مقارنة المواصفات والسعر مقابل الأداء (VS)</h2>
@@ -522,7 +532,7 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-white/95 dark:bg-slate-800 p-6 rounded-2xl border border-sky-300 dark:border-sky-500/30 shadow-sm space-y-5">
+        <div class="bg-white/95 dark:bg-slate-800 p-4 sm:p-6 rounded-2xl border border-sky-300 dark:border-sky-500/30 shadow-sm space-y-5">
           <div class="flex justify-between items-start gap-2">
             <div>
               <span class="text-[11px] font-extrabold px-2.5 py-0.5 rounded bg-sky-100 dark:bg-sky-500/20 text-sky-800 dark:text-sky-300">الخيار A</span>
@@ -560,18 +570,18 @@
           </div>
 
           <div class="grid grid-cols-2 gap-2">
-            <a id="vs-a-amz" href="#" target="_blank" rel="noopener noreferrer"
+            <a id="vs-a-amz" href="https://www.amazon.sa/s?k=PC+Gaming+Hardware&tag=pcbuilder-21" target="_blank" rel="noopener noreferrer"
                class="text-center py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs transition">
               🛒 سعر Amazon ↗
             </a>
-            <a id="vs-a-link" href="#" target="_blank" rel="noopener noreferrer"
+            <a id="vs-a-link" href="https://www.aliexpress.com/wholesale?SearchText=PC+Gaming+Hardware" target="_blank" rel="noopener noreferrer"
                class="text-center py-2.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-extrabold text-xs transition">
               🌐 سعر AliExpress ↗
             </a>
           </div>
         </div>
 
-        <div class="bg-white/95 dark:bg-slate-800 p-6 rounded-2xl border border-purple-300 dark:border-purple-500/30 shadow-sm space-y-5">
+        <div class="bg-white/95 dark:bg-slate-800 p-4 sm:p-6 rounded-2xl border border-purple-300 dark:border-purple-500/30 shadow-sm space-y-5">
           <div class="flex justify-between items-start gap-2">
             <div>
               <span class="text-[11px] font-extrabold px-2.5 py-0.5 rounded bg-purple-100 dark:bg-purple-500/20 text-purple-800 dark:text-purple-300">الخيار B</span>
@@ -609,11 +619,11 @@
           </div>
 
           <div class="grid grid-cols-2 gap-2">
-            <a id="vs-b-amz" href="#" target="_blank" rel="noopener noreferrer"
+            <a id="vs-b-amz" href="https://www.amazon.sa/s?k=PC+Gaming+Hardware&tag=pcbuilder-21" target="_blank" rel="noopener noreferrer"
                class="text-center py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs transition">
               🛒 سعر Amazon ↗
             </a>
-            <a id="vs-b-link" href="#" target="_blank" rel="noopener noreferrer"
+            <a id="vs-b-link" href="https://www.aliexpress.com/wholesale?SearchText=PC+Gaming+Hardware" target="_blank" rel="noopener noreferrer"
                class="text-center py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-extrabold text-xs transition">
               🌐 سعر AliExpress ↗
             </a>
@@ -626,7 +636,7 @@
     <!-- VIEW 3: SMART UPGRADE ADVISOR                             -->
     <!-- ========================================================= -->
     <div id="view-upgrade" class="hidden space-y-6">
-      <section class="bg-white/95 dark:bg-slate-800 p-6 rounded-2xl border border-amber-300 dark:border-amber-500/30 shadow-sm space-y-6">
+      <section class="bg-white/95 dark:bg-slate-800 p-4 sm:p-6 rounded-2xl border border-amber-300 dark:border-amber-500/30 shadow-sm space-y-6">
         <div>
           <h2 class="text-xl font-black text-amber-600 dark:text-amber-400 flex items-center gap-2">
             🚀 استشاري الترقيات الذكي (Smart Upgrade Advisor)
@@ -690,7 +700,7 @@
     <!-- VIEW 4: ONE-CLICK QUICK BUILD PRESETS (6 TIERS)           -->
     <!-- ========================================================= -->
     <div id="view-presets" class="hidden space-y-6">
-      <div class="bg-white/95 dark:bg-slate-800 p-6 rounded-2xl border border-slate-300/80 dark:border-slate-700 shadow-sm">
+      <div class="bg-white/95 dark:bg-slate-800 p-4 sm:p-6 rounded-2xl border border-slate-300/80 dark:border-slate-700 shadow-sm">
         <span class="text-xs font-extrabold text-teal-700 dark:text-teal-400 uppercase">تعبئة تلقائية بنقرة واحدة</span>
         <h2 class="text-xl md:text-2xl font-black text-slate-900 dark:text-white mt-1">
           ⚡ تجميعات مقترحة وجاهزة حسب الميزانية والاستخدام
@@ -785,7 +795,7 @@
     <!-- VIEW 5: PREBUILT PCS & GAMING LAPTOPS DIRECT STORE (6)    -->
     <!-- ========================================================= -->
     <div id="view-prebuilt" class="hidden space-y-6">
-      <div class="bg-white/95 dark:bg-slate-800 p-6 rounded-2xl border border-slate-300/80 dark:border-slate-700 shadow-sm">
+      <div class="bg-white/95 dark:bg-slate-800 p-4 sm:p-6 rounded-2xl border border-slate-300/80 dark:border-slate-700 shadow-sm">
         <span class="text-xs font-extrabold text-emerald-700 dark:text-emerald-400 uppercase">خيارات جاهزة للتوصيل الفوري</span>
         <h2 class="text-xl md:text-2xl font-black text-slate-900 dark:text-white mt-1">
           💻 حواسيب مكتبية جاهزة ولابتوبات قيمنق موصى بها
@@ -941,7 +951,7 @@
     <!-- ========================================================= -->
     <footer class="mt-14 space-y-6">
       <!-- Telegram Channel Banner -->
-      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-sky-950 via-slate-900 to-indigo-950 text-white p-6 sm:p-8 border border-sky-500/30 shadow-lg">
+      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-sky-950 via-slate-900 to-indigo-950 text-white p-4 sm:p-6 md:p-8 border border-sky-500/30 shadow-lg">
         <div class="absolute -right-12 -top-12 w-48 h-48 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
         <div class="absolute -left-12 -bottom-12 w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -974,7 +984,7 @@
       </div>
 
       <!-- Footer Navigation & Affiliate Disclosure Card -->
-      <div class="bg-white/95 dark:bg-slate-800/95 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-slate-300/80 dark:border-slate-700 shadow-sm space-y-6">
+      <div class="bg-white/95 dark:bg-slate-800/95 backdrop-blur-md p-4 sm:p-6 lg:p-8 rounded-3xl border border-slate-300/80 dark:border-slate-700 shadow-sm space-y-6">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pb-6 border-b border-slate-200 dark:border-slate-700/80">
           <!-- Col 1: About Platform -->
           <div class="space-y-2.5">
@@ -1125,7 +1135,58 @@
     </div>
   </div>
 
+  <!-- Compact Mobile-Only Sticky Bottom Summary Bar -->
+  <div id="mobile-summary-bar" class="hidden md:hidden fixed bottom-0 inset-x-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-slate-300/90 dark:border-slate-800 shadow-[0_-4px_20px_rgba(0,0,0,0.15)] px-4 py-2.5 transition-all duration-200">
+    <div class="max-w-6xl mx-auto flex items-center justify-between gap-3">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <div class="min-w-0">
+          <span class="text-[10px] text-slate-500 dark:text-slate-400 font-bold block leading-none">الإجمالي التقديري</span>
+          <span id="mobile-total-display" class="text-sm sm:text-base font-black text-emerald-700 dark:text-emerald-400 block leading-tight truncate">~0 $</span>
+        </div>
+        <span id="mobile-status-badge" class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 shrink-0">
+          بانتظار الاختيار
+        </span>
+      </div>
+      <button id="btn-mobile-scroll-status" type="button" class="shrink-0 inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white text-xs font-black shadow-sm transition cursor-pointer">
+        <span>النتيجة والروابط ↓</span>
+      </button>
+    </div>
+  </div>
+
   <script>
+    // =========================================================
+    // AFFILIATE & DEEPLINK CONFIGURATION
+    // Set ADMITAD_DEEPLINK_PREFIX (e.g. "https://alitems.co/g/...?ulp=") to auto-convert all AliExpress links
+    // =========================================================
+    const ADMITAD_DEEPLINK_PREFIX = "";
+
+    function wrapAliExpressUrl(rawUrl) {
+      if (!rawUrl || typeof rawUrl !== 'string') return "";
+      const trimmed = rawUrl.trim();
+      if (!trimmed || trimmed === '#') return "";
+      if (!ADMITAD_DEEPLINK_PREFIX) return trimmed;
+      if (trimmed.startsWith(ADMITAD_DEEPLINK_PREFIX)) return trimmed;
+      return `${ADMITAD_DEEPLINK_PREFIX}${encodeURIComponent(trimmed)}`;
+    }
+
+    function getAliExpressUrl(part) {
+      if (!part) return wrapAliExpressUrl("https://www.aliexpress.com/");
+      const url = (part.affiliate_url && part.affiliate_url !== '#' && part.affiliate_url.trim() !== '')
+        ? part.affiliate_url.trim()
+        : `https://www.aliexpress.com/wholesale?SearchText=${encodeURIComponent(part.name)}`;
+      return wrapAliExpressUrl(url);
+    }
+
+    function applyAliExpressDeeplinks() {
+      if (!ADMITAD_DEEPLINK_PREFIX) return;
+      document.querySelectorAll('a[href*="aliexpress.com"]').forEach(a => {
+        const raw = a.getAttribute('href');
+        if (raw && !raw.startsWith(ADMITAD_DEEPLINK_PREFIX)) {
+          a.href = wrapAliExpressUrl(raw);
+        }
+      });
+    }
+
     // =========================================================
     // SMART SAVER: TIERED ALIEXPRESS PROMO CODES (NOVEMBER 2026)
     // Easily editable list for seasonal sales (Algeria, GCC & Global)
@@ -1490,12 +1551,49 @@
       };
       Object.keys(tabButtons).forEach(key => {
         tabButtons[key].className = key === activeKey
-          ? `px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer ${activeStyles[key]}`
-          : 'px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white';
+          ? `shrink-0 whitespace-nowrap px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer ${activeStyles[key]}`
+          : 'shrink-0 whitespace-nowrap px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white';
       });
       if (activeKey === 'vs') runVsComparison();
       if (activeKey === 'upgrade') analyzeUpgrades();
+      updateMobileSummaryBar();
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function updateMobileSummaryBar() {
+      const mobileBar = document.getElementById('mobile-summary-bar');
+      if (!mobileBar) return;
+      const hasCpuOrGpu = Boolean((selects.cpu && selects.cpu.value) || (selects.gpu && selects.gpu.value));
+      const isBuilderView = views.builder && !views.builder.classList.contains('hidden');
+
+      if (hasCpuOrGpu && isBuilderView) {
+        mobileBar.classList.remove('hidden');
+      } else {
+        mobileBar.classList.add('hidden');
+      }
+
+      const mobileTotal = document.getElementById('mobile-total-display');
+      const totalLocal = document.getElementById('total-local');
+      if (mobileTotal && totalLocal) {
+        mobileTotal.textContent = totalLocal.textContent;
+      }
+
+      const mobileBadge = document.getElementById('mobile-status-badge');
+      const statusBadge = document.getElementById('status-badge');
+      if (mobileBadge && statusBadge) {
+        mobileBadge.className = statusBadge.className;
+        mobileBadge.textContent = statusBadge.textContent;
+      }
+    }
+
+    const mobileScrollBtn = document.getElementById('btn-mobile-scroll-status');
+    if (mobileScrollBtn) {
+      mobileScrollBtn.addEventListener('click', () => {
+        const target = document.getElementById('status-card');
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
     }
 
     tabButtons.builder.addEventListener('click', () => switchTab('builder'));
@@ -1509,6 +1607,18 @@
         const response = await fetch('parts.json');
         if (!response.ok) throw new Error('HTTP error');
         database = await response.json();
+
+        // Ensure dynamic fallback for any part missing affiliate_url
+        Object.values(database).forEach(categoryList => {
+          if (Array.isArray(categoryList)) {
+            categoryList.forEach(part => {
+              if (!part.affiliate_url || part.affiliate_url === '#' || part.affiliate_url.trim() === '') {
+                part.affiliate_url = `https://www.aliexpress.com/wholesale?SearchText=${encodeURIComponent(part.name)}`;
+              }
+            });
+          }
+        });
+        applyAliExpressDeeplinks();
 
         refreshAllDropdowns('');
         populateDropdown(upgSelects.cpu, database.cpus, false, '');
@@ -1673,7 +1783,7 @@
       document.getElementById('vs-a-tdp').textContent = `${itemA.tdp} W`;
       const valA = (itemA.score / itemA.price_usd).toFixed(2);
       document.getElementById('vs-a-value').textContent = `${valA} نقطة/$`;
-      document.getElementById('vs-a-link').href = itemA.affiliate_url || '#';
+      document.getElementById('vs-a-link').href = getAliExpressUrl(itemA);
       document.getElementById('vs-a-amz').href = getAmazonUrl(itemA);
       document.getElementById('vs-a-extra').textContent = vsCategory === 'cpus'
         ? `المقبس: ${itemA.socket} • كارت مدمج: ${itemA.igpu_score > 0 ? 'نعم' : 'لا (يتطلب كارت منفصل)'}`
@@ -1687,7 +1797,7 @@
       document.getElementById('vs-b-tdp').textContent = `${itemB.tdp} W`;
       const valB = (itemB.score / itemB.price_usd).toFixed(2);
       document.getElementById('vs-b-value').textContent = `${valB} نقطة/$`;
-      document.getElementById('vs-b-link').href = itemB.affiliate_url || '#';
+      document.getElementById('vs-b-link').href = getAliExpressUrl(itemB);
       document.getElementById('vs-b-amz').href = getAmazonUrl(itemB);
       document.getElementById('vs-b-extra').textContent = vsCategory === 'cpus'
         ? `المقبس: ${itemB.socket} • كارت مدمج: ${itemB.igpu_score > 0 ? 'نعم' : 'لا (يتطلب كارت منفصل)'}`
@@ -1890,7 +2000,7 @@
           <p class="text-xs text-slate-600 dark:text-slate-300">${opt.desc}</p>
           <div class="flex flex-wrap gap-2 pt-2">
             <a href="${getAmazonUrl(opt.part)}" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs transition">🛒 اطلبه من Amazon ↗</a>
-            <a href="${opt.part.affiliate_url}" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs transition">🌐 اطلبه من AliExpress ↗</a>
+            <a href="${getAliExpressUrl(opt.part)}" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs transition">🌐 اطلبه من AliExpress ↗</a>
           </div>
         `;
         container.appendChild(card);
@@ -2082,7 +2192,7 @@
               <a href="${getAmazonUrl(mon)}" target="_blank" rel="noopener noreferrer" class="flex-1 text-center py-1.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-[11px] transition">
                 Amazon ↗
               </a>
-              <a href="${mon.ali_url}" target="_blank" rel="noopener noreferrer" class="flex-1 text-center py-1.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-extrabold text-[11px] transition">
+              <a href="${wrapAliExpressUrl(mon.ali_url)}" target="_blank" rel="noopener noreferrer" class="flex-1 text-center py-1.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-extrabold text-[11px] transition">
                 AliExpress ↗
               </a>
             </div>
@@ -2103,6 +2213,7 @@
       document.getElementById('recommended-psu').textContent = totalTdp > 0 ? `${safeMinWatts}W 80+ Bronze` : "---";
 
       updateSmartCoupons(totalUsd);
+      updateMobileSummaryBar();
 
       const linksContainer = document.getElementById('links-container');
       linksContainer.innerHTML = '';
@@ -2124,7 +2235,7 @@
               <a href="${getAmazonUrl(part)}" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-[11px] transition">
                 Amazon ↗
               </a>
-              ${part.affiliate_url ? `<a href="${part.affiliate_url}" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-[11px] transition">AliExpress ↗</a>` : ''}
+              <a href="${getAliExpressUrl(part)}" target="_blank" rel="noopener noreferrer" class="px-2.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-[11px] transition">AliExpress ↗</a>
             </div>
           `;
           linksContainer.appendChild(row);

@@ -384,7 +384,7 @@
       "tdp": 0,
       "score": 0,
       "price_usd": 0,
-      "affiliate_url": ""
+      "affiliate_url": "https://www.aliexpress.com/wholesale?SearchText=AMD%20Ryzen%20APU%20iGPU"
     },
     {
       "id": "rx580_8g",
@@ -580,7 +580,7 @@
       "max_tdp": 65,
       "tdp": 2,
       "price_usd": 0,
-      "affiliate_url": ""
+      "affiliate_url": "https://www.aliexpress.com/wholesale?SearchText=AMD%20Stock%20Cooler%20Wraith"
     },
     {
       "id": "single_tower_argb",
