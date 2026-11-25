@@ -1,0 +1,4 @@
+.tmp.driveupload/
+marketing_assets/
+__pycache__/
+*.pyc
